@@ -1,0 +1,46 @@
+<div>
+                <div class="card-title text-center">
+                    <h2><?= $produit->getField('titre') ?></h2>
+                    <h3>Avis clients</h3>
+                </div>
+                <?php foreach ($notes as $note){ ?>
+                  <div class="row">
+                  <div class="row col-4">
+                    <p class="text-center"> <?= $note->membre->getField('pseudo') ?></p>
+                    <p class="text-center">le  <?= $note->getField('date') ?></p>
+                    <p class="text-center">Note :  <?= $note->getField('note') ?> /5</p>
+                  </div>
+                <div class="row col-8">
+                 <h2><?= $note->getField('titre') ?></h2>
+                <p class="text-center"> <?= $note->getField('description') ?></p>
+                </div>
+                </div>
+
+                <div>
+                  <h3>Donnez votre avis</h3>
+                  <?php if(isset($_SESSION['membre'])) {
+                  <form method="post" action="" enctype="multipart/form-data">
+
+
+                      <div class="form-group">
+                          <div class="row">
+                                  <label for="note">Note</label>
+                                  <input type="number" name="note" id="note" value="<?= $note_actuelle['note'] ?? '' ?>" class="form-control">
+                                  <label for="titre">Titre</label>
+                                  <input type="text" name="titre" id="titre" value="<?= $note_actuelle['titre'] ?? '' ?>" class="form-control">
+                                  <label for="description">Avis</label>
+                                  <textarea name="description" id="description" class="form-control" rows="7"><?= $note_actuelle['description'] ?? '' ?></textarea>
+                          </div>
+                          <div class="row">
+                              <div class="col-12 text-center">
+                                  <input type="submit" class="btn btn-success" value="Laissez un avis">
+                              </div>
+                          </div>
+                  </form>
+                  <?php }else { ?>
+                    <p>Vous devez vous connecter pour laisser un avis</p>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= $url ?>membre/connexion">Connexion</a>
+                    </li>
+                  <?php }
+                </div>

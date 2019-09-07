@@ -1,0 +1,28 @@
+<h2><?= $title ?></h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                  <th>Rang</th>
+                  <th>Couverture</th>
+                  <th>Titre</th>
+                  <th>Auteur</th>
+                  <th>Nombre de ventes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $i=0;
+                foreach($meilleurs_ventes as $vente) :
+                  $i++;
+                        ?>
+                    <tr>
+                        <td><?= $i ?></td>
+                        <a href="'. $url .'produit/affiche/'. $vente->getField('id_produit').'"><img src="'. $url .'photo/'. ($vente->getField('photo')) .'" class="thumbnail img-fluid"></a>
+                        <td><a href="<?= $url ?>produit/affiche/<?= $vente->getField('id_produit') ?>"><?= $vente->getField('titre') ?></a></td>
+                        <td><?= $vente->getField('auteur') ?></td>
+                        <td><?= $vente->getField('nb_ventes') ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>

@@ -1,0 +1,25 @@
+body{
+  margin-top:80px;
+}
+.main-container{
+  min-height:calc(100vh - 136px);
+}
+.bg-dark{
+  color : lightgrey;
+}
+.active{
+background-color:#155724!important;
+}
+a{
+color:#155724;
+}
+a .active{
+color:white;
+}
+.flamme {
+  background-image: url('../photo/flamme.gif')!important;
+  font-weight: bold;
+  color:white!important;
+  text-shadow: rgb(204, 0, 0) 0.1em 0.1em 0.2em;
+  width: 100%;
+}
