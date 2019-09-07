@@ -2,44 +2,47 @@
 
     <div class="col-md-6 offset-md-2">
         <?php if (!empty($message)): ?>
-            <div class="alert alert-success">
+        <div class="alert alert-success">
             <?= $message ?><p><a href="<?= $url ?>produit/panier">Voir le Panier</a></p>
-            </div>
+        </div>
         <?php endif; ?>
         <div class="card border">
             <div class="card-body">
                 <div class="card-title text-center">
                     <h2><?= $produit->getField('titre') ?></h2>
                 </div>
-                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid"><hr>
+                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid">
+                <hr>
 
                 <p class="text-center">Auteur : <?= $produit->getField('auteur') ?></p>
                 <p class="text-center">Catégorie : <?= $produit->getField('categorie') ?></p>
                 <p class="text-center">Date de parution : <?= $produit->getField('date') ?></p>
-                <?php if($produit->getField('traducteur')!=''){
+                <?php if($produit->getField('traducteur')!=''): ?>
                 <p class="text-center">Traducteur : <?= $produit->getField('traducteur') ?></p>
-                  <p class="text-center"> Année de traduction : <?= $produit->getField('dateTraduction') ?>  </p>
-                <? }
+                <p class="text-center"> Année de traduction : <?= $produit->getField('dateTraduction') ?> </p>
+                <?php endif; ?>
                 <p class="text-center">Synopsis : <?= $produit->getField('description') ?></p>
-                <p class="text-center">Prix : <?= $produit->getField('prix') ?> €</p><hr>
+                <p class="text-center">Prix : <?= $produit->getField('prix') ?> €</p>
+                <hr>
                 <?php if ( $produit->getField('stock') > 0 ) :?>
-                    <em>Nombre de produit(s) disponible(s) : <?= $produit->getField('stock') ?></em><hr>
-                    <form method="post" action="">
-                        <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>">
+                <em>Nombre de produit(s) disponible(s) : <?= $produit->getField('stock') ?></em>
+                <hr>
+                <form method="post" action="">
+                    <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>">
 
-                        <label for="quantite">Quantité</label>
-                        <select class="form-control" id="quantite" name="quantite">
-                            <?php
+                    <label for="quantite">Quantité</label>
+                    <select class="form-control" id="quantite" name="quantite">
+                        <?php
                                 for($i=1; $i<=$produit->getField('stock') && $i<=5; $i++ ): ?>
-                                <option><?= $i ?></option>
-                            <?php endfor; ?>
-                        </select><br>
-                        <input type="submit" class="btn btn-success col-12" name="ajout_panier" value="Ajout au panier">
-                    </form>
+                        <option><?= $i ?></option>
+                        <?php endfor; ?>
+                    </select><br>
+                    <input type="submit" class="btn btn-success col-12" name="ajout_panier" value="Ajout au panier">
+                </form>
                 <?php else : ?>
-                    <div class="alert alert-danger text-center">
-                        Produit victime de son succès (indisponible)
-                    </div>
+                <div class="alert alert-danger text-center">
+                    Produit victime de son succès (indisponible)
+                </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -48,24 +51,28 @@
 
 
 
-    <?  if($autresProduits) : ?>
-    <h2 class="text-center w-100 m-5">Ces articles  de la catégorie <?=  $produit->getField('categorie') ?> pourraient vous plaire</h2>
-        <div class="more d-flex w-100">
-          <?
+    <?php  if($autresProduits) : ?>
+    <h2 class="text-center w-100 m-5">Ces articles de la catégorie <?=  $produit->getField('categorie') ?> pourraient
+        vous plaire</h2>
+    <div class="more d-flex w-100">
+        <?php
     foreach ($autresProduits as $autreProduit): ?>
 
         <div class="card m-1" style="width: 18rem;">
             <a href="<?= $url ?>produit/affiche/<?= $autreProduit->getField('id_produit') ?>">
-              <img src="<?= $url ?>photo/<?= $autreProduit->getField('photo') ?>" alt="" class="card-img img-fluid">
+                <img src="<?= $url ?>photo/<?= $autreProduit->getField('photo') ?>" alt="" class="card-img img-fluid">
             </a>
             <div class="card-body">
                 <h3><?= $autreProduit->getField('titre') ?></h3>
-                <? if(strlen($autreProduit->getField('description'))>150)  { ?>
-                  <p class="text-center"> Description : <?= substr($autreProduit->getField('description'),0,150).' ...' ?>  </p><? } else{ ?>
-                <p class="text-center">Description : <?= $autreProduit->getField('description') ?></p><? } ?>
+                <?php if(strlen($autreProduit->getField('description'))>150): ?>
+                <p class="text-center"> Description : <?= substr($autreProduit->getField('description'),0,150).' ...' ?>
+                </p>
+                <?php  else: ?>
+                <p class="text-center">Description : <?= $autreProduit->getField('description') ?></p>
+                <?php endif; ?>
             </div>
-          </div>
-<?php endforeach;
+        </div>
+        <?php endforeach;
 endif ; ?>
-          </div>
+    </div>
 </div>
