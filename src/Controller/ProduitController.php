@@ -17,7 +17,7 @@ class ProduitController extends Controller{
 
   // affiche les produits d'une catégorie selectionnée
   public function afficheCategorie($cat){
-
+echo"hello";
     $produits = $this->getModel()->getAllProduitsByCategories($cat);
     $categories = $this->getModel()->getAllCategories();
       if($cat)  $selected = $cat;
