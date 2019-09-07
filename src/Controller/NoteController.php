@@ -1,17 +1,16 @@
 <?php
 
 namespace Controller;
-include Controller/ProduitController;
 
 class NoteController extends Controller{
 
   public function allInProduit($id){
-    $gerProduit= new ProduitController();
-    $gerMembre= new MembreController();
-    $produit = $gerProduit->getModel()->selectProduit($id);
+    $produit = $this->getModel('Model\ProduitModel')->selectProduit($id);
     $notesProduit = $this->getModel()->selectAllNotesInProduit($id);
+    $i=0;
     foreach($notesProduit as $note){
-      $note->membre=$gerMembre->selectMembre($note->getField('id_membre'));
+      $notesProduit[$i]['membre']=$this->getModel('Model\MembreModel')->selectMembre($note->getField('id_membre'));
+      $i++;
     }
     $erreur = array();
 

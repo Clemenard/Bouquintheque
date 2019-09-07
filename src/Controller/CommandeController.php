@@ -1,6 +1,7 @@
 <?php
 
 namespace Controller;
+use ProduitModel;
 
 class CommandeController extends Controller{
 
@@ -52,6 +53,13 @@ if(!empty($id)){
 
   public function afficheMeilleursVentes(){
     $params['meilleurs_ventes'] = $this->getModel()->getBestSales();
+    $params['title'] = 'Meilleurs ventes';
+    $i=0;
+    foreach ($params['meilleurs_ventes'] as $produit){
+      $produitbis=$this->getModel('Model\ProduitModel')->selectProduit($produit['id_produit']);
+      $params['meilleurs_ventes'][$i]['produit']=$produitbis;
+      $i++;
+    }
       return $this->render('layout.html','meilleursventes.html',$params);
   }
 

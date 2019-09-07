@@ -29,18 +29,17 @@ if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
                         ?>
                     <tr>
                         <?php
-                        foreach($champs as $index => $value)
-                        {
-                            if ($index == 'photo') {
+                        foreach($champs as $index => $value):
+                            if ($index == 'photo') :
                                 $value = '  <a href="'. $url .'produit/affiche/'. $produit->getField('id_produit').'"><img src="'. $url .'photo/'. ($produit->getField('photo')) .'" class="thumbnail img-fluid"></a>';
-                            }
-                            if ($index == 'description' && strlen($value)>75) { ?><td class='desc-produit'><?= substr($value,0,75).' ...' ?></td><?
-
-                            }
-                            else{
+                            endif;
+                            if ($index == 'description' && strlen($value)>75) : ?>
+                            <td class='desc-produit'><?= substr($value,0,75).' ...' ?></td>
+                            <?php  else:
                           ?>
-                          <td class='desc-produit'><?= $value ?></td><? }
-                        }
+                          <td class='desc-produit'><?= $value ?></td>
+                          <?php endif;
+                            endforeach;
                         ?>
                         <td><a href="<?= $url ?>produit/editProduit/<?= $produit->getField('id_produit') ?>"><i class="fa fa-edit"></i></a></td>
                         <td><a href="<?= $url ?>produit/suppProduit/<?= $produit->getField('id_produit') ?>" onclick="return(confirm('Etes vous sûr de vouloir supprimer ce produit ?'))"><i class="fa fa-trash"></i></a></td>

@@ -13,14 +13,15 @@
             <tbody>
                 <?php $i=0;
                 foreach($meilleurs_ventes as $vente) :
+                $value = '  <a href="'. $url .'produit/affiche/'. $vente['produit']->getField('id_produit').'"><img src="'. $url .'photo/'. ($vente['produit']->getField('photo')) .'" class="thumbnail img-fluid"></a>';
                   $i++;
                         ?>
                     <tr>
-                        <td><?= $i ?></td>
-                        <a href="'. $url .'produit/affiche/'. $vente->getField('id_produit').'"><img src="'. $url .'photo/'. ($vente->getField('photo')) .'" class="thumbnail img-fluid"></a>
-                        <td><a href="<?= $url ?>produit/affiche/<?= $vente->getField('id_produit') ?>"><?= $vente->getField('titre') ?></a></td>
-                        <td><?= $vente->getField('auteur') ?></td>
-                        <td><?= $vente->getField('nb_ventes') ?></td>
+                        <td class='desc-produit'><?= $i ?></td>
+                        <td class='desc-produit'><?= $value ?></td>
+                        <td><a href="<?= $url ?>produit/affiche/<?= $vente['produit']->getField('id_produit') ?>"><?= $vente['produit']->getField('titre') ?></a></td>
+                        <td class='desc-produit'><?= $vente['produit']->getField('auteur') ?></td>
+                        <td class='desc-produit'><?= $vente['nb_ventes'] ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
