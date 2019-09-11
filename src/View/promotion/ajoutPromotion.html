@@ -1,0 +1,44 @@
+<h2><?= $title ?>
+</h2>
+<?php
+if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
+
+// enctype="multipart/form-data" permet d'alimenter la superglobale $_FILES avec les éléments provenant des input de type="file"
+
+?>
+<?php if (!empty($erreur) ) : ?>
+    <div class="alert alert-danger"><?= $erreur ?></div>
+<?php endif; ?>
+
+<form method="post" action="" enctype="multipart/form-data">
+
+
+    <div class="form-group">
+        <div class="row">
+
+                <label for="reference">Référence</label>
+                <input type="text" name="reference" id="reference" value="<?= $promotion_actuel['reference'] ?? '' ?>" class="form-control">
+                <label for="stock">Stock</label>
+                <input type="text" name="stock" id="stock" value="<?= $promotion_actuel['stock'] ?? '' ?>" class="form-control">
+
+                <label for="valeur">Valeur</label>
+                <input type="number" name="valeur" id="valeur" value="<?= $promotion_actuel['valeur'] ?? '' ?>" class="form-control">
+                <label for="panier_minimum">Valeur de panier minimale</label>
+                <input type="number" name="panier_minimum" id="panier_minimum" value="<?= $promotion_actuel['panier_minimum'] ?? '' ?>" class="form-control">
+                <label for="date_expiration">Date d'expiration</label>
+                <input type="date" name="date_expiration" id="date_expiration" value="<?= $promotion_actuel['date_expiration'] ?? '' ?>" class="form-control">
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center">
+                <input type="submit" class="btn btn-success" value="Enregistrer la promotion">
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<?php
+endif;
+?>

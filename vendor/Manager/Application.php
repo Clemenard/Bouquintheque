@@ -4,6 +4,7 @@ final class Application{
   private $controller;
   private $action;
   private $argument='';
+  private $argumentBis='';
 
 
 public function __construct(){
@@ -24,6 +25,9 @@ public function __construct(){
   if(!empty($tab[4])) {
     $this->argument = urldecode($tab[4]);
   }
+  if(!empty($tab[5])) {
+    $this->argumentBis = urldecode($tab[5]);
+  }
 
 }
 
@@ -33,7 +37,7 @@ public function run(){
     $a=new $this->controller;
     if(!is_null($this->action) && method_exists($a,$this->action)){
       $action=$this->action;
-      $a->$action($this->argument);
+      $a->$action($this->argument,$this->argumentBis);
     }
     else{
       echo"bouh";

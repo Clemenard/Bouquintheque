@@ -3,8 +3,18 @@ namespace Model;
 use PDO;
  class ProduitModel extends Model{
 
-  public function selectAllProduit($order=''){
-    return $this->selectAll($order);
+  public function selectAllProduit($order='',$asc=""){
+    $requete = "SELECT * FROM " .$this->getTable(true) .  " WHERE is_deleted = 0 ";
+    if(!empty($order)){$requete .=" ORDER BY ".$order;}
+    if(!empty($asc)){$requete .=" DESC";}
+    $resultat = $this->getDb()->prepare($requete);
+    $resultat->execute();
+    $donnees = $resultat->fetchAll(PDO::FETCH_CLASS,'Entity\\' . ucfirst($this->getTable()));
+    if(!$donnees){
+      return false;
+    }else{
+      return $donnees;
+    }
     }
 
   public function selectProduit($id){
@@ -12,7 +22,8 @@ use PDO;
     }
 
   public function deleteProduit($id){
-    return $this->delete($id);
+    $infos['is_deleted']=1;
+    return $this->update($id,$infos);
   }
 
   public function insertProduit($infos){
@@ -30,7 +41,7 @@ use PDO;
 
 
   public function getAllCategories(){
-    $requete = "SELECT DISTINCT categorie FROM " .$this->getTable(true)." ORDER BY categorie";
+    $requete = "SELECT DISTINCT categorie FROM " .$this->getTable(true)." WHERE is_deleted =0 ORDER BY categorie";
     $resultat = $this->getDb()->query($requete);
     $donnees = $resultat->fetchAll();
     if(!$donnees){

@@ -38,7 +38,7 @@ public function execRequest($req,$params=array()){
 
 
 public function getKeys(){
-  $q=$thisexecRequest('DESC '.$this->getTable(true));
+  $q=$this->execRequest('DESC '.$this->getTable(true));
   $r=$q->fetchAll();
   return array_slice($r,1);// on retourne tout sauf l'ID
 }

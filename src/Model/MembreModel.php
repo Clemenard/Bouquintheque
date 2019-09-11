@@ -8,8 +8,13 @@ class MembreModel extends Model{
   public function inscription($infos){
     return $this->register($infos);
   }
-  public function updateMembre($infos){
-    return $this->update($infos);
+
+  public function selectMembre($id){
+    return $this->select($id);
+  }
+
+  public function updateMembre($id,$infos){
+    return $this->update($id,$infos);
   }
 
   public function existsPseudo($pseudo){

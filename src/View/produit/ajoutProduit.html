@@ -30,19 +30,19 @@ if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
             </div>
             <div class="col-sm-6">
 
-                <label for="couleur">Couleur</label>
-                <input type="text" name="couleur" id="couleur" value="<?= $produit_actuel['couleur'] ?? '' ?>" class="form-control">
+                <label for="auteur">Auteur</label>
+                <input type="text" name="auteur" id="auteur" value="<?= $produit_actuel['auteur'] ?? '' ?>" class="form-control">
+                <label for="date_parution">Année de parution</label>
+                <input type="text" name="date_parution" id="date_parution" value="<?= $produit_actuel['date_parution'] ?? '' ?>" class="form-control">
 
-                <label for="taille">Taille</label>
-                <input type="text" name="taille" id="taille" value="<?= $produit_actuel['taille'] ?? '' ?>" class="form-control">
-
-                <label for="public">public</label>
-                <select name="public" class="form-control">
-                    <option  <?= ( isset($produit_actuel['public']) && $produit_actuel['public'] == 'm' ) ? 'selected' : '' ?> value="m">Homme</option>
-                    <option <?= ( isset($produit_actuel['public']) && $produit_actuel['public'] == 'f' ) ? 'selected' : '' ?> value="f">Femme</option>
-                    <option <?= ( isset($produit_actuel['public']) && $produit_actuel['public'] == 'mixte' ) ? 'selected' : '' ?>value="mixte">Mixte</option>
-                    <option <?= ( isset($produit_actuel['public']) && $produit_actuel['public'] == 'alien' ) ? 'selected' : '' ?>value="alien">Alien</option>
-                </select>
+                <label for="traducteur">Traducteur</label>
+                <input type="text" name="traducteur" id="traducteur" value="<?= $produit_actuel['traducteur'] ?? '' ?>" class="form-control">
+                <label for="date_traduction">Année de traduction</label>
+                <input type="text" name="date_traduction" id="date_traduction" value="<?= $produit_actuel['date_traduction'] ?? '' ?>" class="form-control">
+                <label for="editeur">Editeur</label>
+                <input type="text" name="editeur" id="editeur" value="<?= $produit_actuel['editeur'] ?? '' ?>" class="form-control">
+                <label for="collection">Collection</label>
+                <input type="text" name="collection" id="collection" value="<?= $produit_actuel['collection'] ?? '' ?>" class="form-control">
 
                 <?php
                     if (isset($produit_actuel['photo']) ) : ?>

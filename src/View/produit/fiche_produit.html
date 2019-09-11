@@ -1,6 +1,6 @@
 <div class="row">
-
-    <div class="col-md-6 offset-md-2">
+        <div class="col-md-6 ">
+    <div class="col-md-6 ">
         <?php if (!empty($message)): ?>
         <div class="alert alert-success">
             <?= $message ?><p><a href="<?= $url ?>produit/panier">Voir le Panier</a></p>
@@ -16,13 +16,15 @@
 
                 <p class="text-center">Auteur : <?= $produit->getField('auteur') ?></p>
                 <p class="text-center">Catégorie : <?= $produit->getField('categorie') ?></p>
-                <p class="text-center">Date de parution : <?= $produit->getField('date') ?></p>
+                <p class="text-center">Date de parution : <?= $produit->getField('date_parution') ?></p>
                 <?php if($produit->getField('traducteur')!=''): ?>
                 <p class="text-center">Traducteur : <?= $produit->getField('traducteur') ?></p>
-                <p class="text-center"> Année de traduction : <?= $produit->getField('dateTraduction') ?> </p>
+                <p class="text-center"> Année de traduction : <?= $produit->getField('date_traduction') ?> </p>
                 <?php endif; ?>
                 <p class="text-center">Synopsis : <?= $produit->getField('description') ?></p>
-                <p class="text-center">Prix : <?= $produit->getField('prix') ?> €</p>
+                <p class="text-center">Traducteur : <?= $produit->getField('traducteur') ?></p>
+                <p class="text-center"> Editeur : <?= $produit->getField('editeur') ?> </p>
+                <p class="text-center">Collection : <?= $produit->getField('collection') ?> €</p>
                 <hr>
                 <?php if ( $produit->getField('stock') > 0 ) :?>
                 <em>Nombre de produit(s) disponible(s) : <?= $produit->getField('stock') ?></em>
@@ -74,5 +76,21 @@
         </div>
         <?php endforeach;
 endif ; ?>
+    </div>
+</div>
+    <div class="col-md-6 ">
+            <h2 class="text-center w-100 m-5">Moyenne des notes : <?= $moyenneNotes['note'] ?></h2>
+            <div class="card border">
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                                <h2><?= $note['titre']  ?> </h2>
+                            <h5>Par <?= $membre->getField('pseudo') ?> le <?= $note['date'] ?> </h5>
+                        </div>
+        
+                        <p class="text-center">Note : <?= $note['note'] ?></p>
+                        <p class="text-center">Avis : <?= $note['description'] ?></p>
+                        <a href="<?= $url ?>note/notes/<?= $produit->getField('id_produit') ?>" class="btn btn-success"> Voir tous les avis</a>
+                    </div>
+                </div>   
     </div>
 </div>

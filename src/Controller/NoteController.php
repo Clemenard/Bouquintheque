@@ -4,7 +4,7 @@ namespace Controller;
 
 class NoteController extends Controller{
 
-  public function allInProduit($id){
+  public function notes($id){
     $produit = $this->getModel('Model\ProduitModel')->selectProduit($id);
     $notesProduit = $this->getModel()->selectAllNotesInProduit($id);
     $i=0;
@@ -32,7 +32,7 @@ class NoteController extends Controller{
 
     }
     $params = array(
-      'produits' => $produits,
+      'produit' => $produit,
       'notes' => $notesProduit,
       'erreur' =>$erreur,
       'note_actuelle'=>$_POST

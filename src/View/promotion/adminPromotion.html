@@ -1,0 +1,50 @@
+<h2><?= $title ?></h2>
+<?php
+
+if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
+
+?>
+    <a href="<?= $url ?>promotion/ajoutPromotion" class="btn btn-success">Ajouter une promotion</a>
+    <?php if ($promotions!=false) : ?>
+    <div class="table-responsive">
+        
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                  <th><a href="<?= $url ?>promotion/adminPromotion/id_promotion/<?= $desc ?>">ID</a></th>
+                  <th><a href="<?= $url ?>promotion/adminPromotion/reference/<?= $desc ?>">Ref.</a></th>
+                  <th><a href="<?= $url ?>promotion/adminPromotion/valeur/<?= $desc ?>">Remise</a></th>
+                  <th><a href="<?= $url ?>promotion/adminPromotion/panier_minimum/<?= $desc ?>">Valeur minimal de panier</a></th>
+                  <th><a href="<?= $url ?>promotion/adminPromotion/stock/<?= $desc ?>">Stock</a></th>
+                    <th><a href="<?= $url ?>promotion/adminPromotion/date_expiration/<?= $desc ?>">Date expiration</a></th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php 
+                foreach($promotions as $promotion) :
+                        $champs = $promotion->getFields();
+                        ?>
+                    <tr>
+                        <?php
+                        foreach($champs as $index => $value):
+                          if($index == 'valeur' ): ?>
+                            <td class='desc-promotion'><?= $value.' euros' ?></td>
+                            <?php else: ?>
+                          <td class='desc-promotion'><?= $value ?></td>
+                          <?php endif;
+                            endforeach;
+                        ?>
+                        <td><a href="<?= $url ?>promotion/editPromotion/<?= $promotion->getField('id_promotion') ?>"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="<?= $url ?>promotion/suppPromotion/<?= $promotion->getField('id_promotion') ?>" onclick="return(confirm('Etes vous sûr de vouloir supprimer ce promotion ?'))"><i class="fa fa-trash"></i></a></td>
+                    </tr>
+                <?php endforeach;
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+
+<?php
+endif;
+endif;

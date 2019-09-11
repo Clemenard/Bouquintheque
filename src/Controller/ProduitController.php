@@ -17,7 +17,6 @@ class ProduitController extends Controller{
 
   // affiche les produits d'une catégorie selectionnée
   public function afficheCategorie($cat){
-echo"hello";
     $produits = $this->getModel()->getAllProduitsByCategories($cat);
     $categories = $this->getModel()->getAllCategories();
       if($cat)  $selected = $cat;
@@ -33,6 +32,9 @@ echo"hello";
   public function affiche($id){
     $message = '';
     $produit = $this->getModel()->selectProduit($id);
+    $note = $this->getModel('Model\NoteModel')->selectBestNote($id);
+    $moyenneNotes = $this->getModel('Model\NoteModel')->selectMoyNote($id);
+    $membre = $this->getModel('Model\MembreModel')->selectMembre($note['id_membre']);
     $autresProduits = $this->getModel()->getThreeOtherProduitsByCategories($produit->getField('categorie'),$id);
 
     // traiter un ajout au panier
@@ -46,6 +48,9 @@ echo"hello";
       'produit' => $produit,
       'message' => $message,
       'autresProduits' => $autresProduits,
+      'note' => $note,
+      'membre' => $membre,
+      'moyenneNotes' => $moyenneNotes
     );
     return $this->render('layout.html','fiche_produit.html',$params);
 
@@ -115,12 +120,14 @@ echo"hello";
   }
 
   // methodes admin de gestion des produits
-  public function adminProduit($order=''){
+  public function adminProduit($order='',$desc=''){
 
     // tester si je suis admin
     if(isset($_SESSION['membre']) && $_SESSION['membre']->isAdmin()){
       $params['title'] = 'Admin Produits';
-      $params['produits'] = $this->getModel()->selectAllProduit($order);
+      $params['produits'] = $this->getModel()->selectAllProduit($order,$desc);
+      if(empty($desc)){$params['desc']='asc';}
+      else{$params['desc']='';}
       return $this->render('layout.html','adminProduit.html',$params);
     }
     else{
@@ -146,11 +153,12 @@ echo"hello";
       if(!empty($_POST)){
 
         $champsvides = 0;
-        foreach($_POST as $value){
-          if(empty($value)) $champsvides++;
+        foreach($_POST as $key=>$value){
+          if(empty($value) && $key!=("traducteur" || "date_traduction")) $champsvides++;
+          if($key==("date_parution" || "date_traduction")){$value=intval($value);}
         }
         if($champsvides>0){
-          $erreur[] = 'Merci de remplir '.$champvides.' champ(s) manquant(s)';
+          $erreur[] = 'Merci de remplir '.$champsvides.' champ(s) manquant(s)';
         }
 
         if(empty($erreur)){
@@ -182,11 +190,13 @@ echo"hello";
       if(!empty($_POST)){
 
         $champsvides = 0;
-        foreach($_POST as $value){
-          if(empty($value)) $champsvides++;
+        foreach($_POST as $key=>$value){
+
+          if(empty($value) && $key!=("traducteur" || "date_traduction" || "photo")) $champsvides++;
+          if(empty($value) && $key=="photo"){unset($_POST['photo']);}
         }
         if($champsvides>0){
-          $erreur[] = 'Merci de remplir '.$champvides.' champ(s) manquant(s)';
+          $erreur[] = 'Merci de remplir '.$champsvides.' champ(s) manquant(s)';
         }
 
         if(empty($erreur)){
@@ -239,4 +249,3 @@ echo"hello";
 
 }
 
-// https://fromsmash.com/vuesboutique
