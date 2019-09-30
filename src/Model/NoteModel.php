@@ -7,10 +7,10 @@ use PDO;
     return $this->selectAll($order);
     }
 
-    public function selectAllNoteInProduit($id,$order=''){
+    public function selectAllNotesInProduit($id,$order=''){
         if(!empty($order)) $order=' ORDER BY '.$order;
       if(!empty($desc)) $desc='DESC';
-          $q=$this->execRequest('SELECT * FROM '.$this->getTable(true). 'WHERE id_produit= '.$id );
+          $q=$this->execRequest('SELECT * FROM '.$this->getTable(true).' WHERE id_produit='.$id );
           $data=$q->fetchAll(PDO::FETCH_CLASS,'Entity\\'.ucfirst($this->getTable()));
           if(!$data){
             return false;
@@ -30,7 +30,7 @@ use PDO;
       }
 
       public function selectMoyNote($id){
-            $requete='SELECT AVG(note) AS note FROM '.$this->getTable(true). ' GROUP BY id_produit= '.$id;
+            $requete='SELECT AVG(note) AS note FROM '.$this->getTable(true). ' WHERE id_produit= '.$id;
               $resultat = $this->getDb()->query($requete);
             $donnees = $resultat->fetch();
               if(!$donnees){

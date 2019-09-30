@@ -1,24 +1,25 @@
 <div>
                 <div class="card-title text-center">
                     <h2><?= $produit->getField('titre') ?></h2>
+                    <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="w-200 ">
                     <h3>Avis clients</h3>
                 </div>
-                <?php foreach ($notes as $note){ ?>
-                  <div class="row">
-                  <div class="row col-4">
+                <?php foreach ($notes as $note): ?>
+                <div class="card border">
+                    <div class="card-body">
+                        <div class="card-title text-center">
                     <p class="text-center"> <?= $note->membre->getField('pseudo') ?></p>
                     <p class="text-center">le  <?= $note->getField('date') ?></p>
-                    <p class="text-center">Note :  <?= $note->getField('note') ?> /5</p>
+                    <p class="text-center">Note :  <?= $note->getField('note') ?> /10</p>
                   </div>
-                <div class="row col-8">
-                 <h2><?= $note->getField('titre') ?></h2>
-                <p class="text-center"> <?= $note->getField('description') ?></p>
+                 <h2>Titre : <?= $note->getField('titre') ?></h2>
+                <p> Contenu : <?= $note->getField('description') ?></p>
+              </div>
                 </div>
-                </div>
-
+<?php endforeach; ?>
                 <div>
                   <h3>Donnez votre avis</h3>
-                  <?php if(isset($_SESSION['membre'])) {
+                  <?php if(isset($_SESSION['membre'])) : ?>
                   <form method="post" action="" enctype="multipart/form-data">
 
 
@@ -37,10 +38,10 @@
                               </div>
                           </div>
                   </form>
-                  <?php }else { ?>
+                  <?php else: ?>
                     <p>Vous devez vous connecter pour laisser un avis</p>
                     <li class="nav-item">
                       <a class="nav-link" href="<?= $url ?>membre/connexion">Connexion</a>
                     </li>
-                  <?php }
+                    <?php endif; ?>
                 </div>

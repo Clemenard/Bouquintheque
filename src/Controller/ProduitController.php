@@ -39,7 +39,7 @@ public $TVA=0.2;
     $produit = $this->getModel()->selectProduit($id);
     $note = $this->getModel('Model\NoteModel')->selectBestNote($id);
     $moyenneNotes = $this->getModel('Model\NoteModel')->selectMoyNote($id);
-    $membre = $this->getModel('Model\MembreModel')->selectMembre($note['id_membre']);
+    $membre = $this->getModel('Model\MembreModel')->selectMembre($note['id_membre']); 
     $autresProduits = $this->getModel()->getThreeOtherProduitsByCategories($produit->getField('categorie'),$id);
 
     // traiter un ajout au panier
@@ -89,6 +89,7 @@ public $TVA=0.2;
 
     if(!empty($_POST['viderpanier'])){
       $this->viderPanier();
+      mail ( $_SESSION['membre']->getField('email') , 'Oh, pourquoi renoncer?' , "Nos produits sont géniaux, pourquoi avoir décommandé? Nous espérons recevoir prochainement de vos nouvelles, n'hésitez pas à nous faire part de vos motifs de mécontentement." );
     }
 
     if(!empty($_SESSION['panier'])){

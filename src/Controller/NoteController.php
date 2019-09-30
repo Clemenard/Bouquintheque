@@ -5,13 +5,6 @@ namespace Controller;
 class NoteController extends Controller{
 
   public function notes($id){
-    $produit = $this->getModel('Model\ProduitModel')->selectProduit($id);
-    $notesProduit = $this->getModel()->selectAllNotesInProduit($id);
-    $i=0;
-    foreach($notesProduit as $note){
-      $notesProduit[$i]['membre']=$this->getModel('Model\MembreModel')->selectMembre($note->getField('id_membre'));
-      $i++;
-    }
     $erreur = array();
 
     if(!empty($_POST)){
@@ -21,16 +14,22 @@ class NoteController extends Controller{
         if(empty($value)) $champsvides++;
       }
       if($champsvides>0){
-        $erreur[] = 'Merci de remplir '.$champvides.' champ(s) manquant(s)';
+        $erreur[] = 'Merci de remplir '.$champsvides.' champ(s) manquant(s)';
       }
 
       if(empty($erreur)){
-        $this->copyPhoto();
-        $this->getModel()->insertProduit($_POST);
-        $this->redirect($this->url.'note/allInProduit');
+        $this->getModel()->insertNote($_POST);
       }
 
     }
+    $produit = $this->getModel('Model\ProduitModel')->selectProduit($id);
+    $notesProduit = $this->getModel()->selectAllNotesInProduit($id);
+    $i=0;
+    if($notesProduit){
+    foreach($notesProduit as $note){
+      $notesProduit[$i]->membre=$this->getModel('Model\MembreModel')->selectMembre($note->getField('id_membre'));
+      $i++;
+    }}
     $params = array(
       'produit' => $produit,
       'notes' => $notesProduit,

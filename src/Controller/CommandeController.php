@@ -6,6 +6,7 @@ use ProduitModel;
 class CommandeController extends Controller{
 
   public $id_commande;
+  public $TVA=0.2;
 
   public function adminCommande(){
 
@@ -45,9 +46,10 @@ class CommandeController extends Controller{
 
 if(!empty($id)){
 
-    $params['details_commande'] = $this->getModel()->getBestSales();
+    $params['details_commande'] = $this->getModel()->getDetailsMyCommandes($id);
       $params['title'] = 'Détail de ma commande';
       $params['commande'] = $this->getModel()->getMyCommande($id);
+      $params['TVA'] = $this->TVA;
       return $this->render('layout.html','detailscommande.html',$params);
   }}
 
@@ -68,6 +70,7 @@ if(!empty($id)){
         $this->validationCommande($promo,$sommeTotale);}
       $params['title'] = 'Mes Commandes';
       $params['commandes'] = $this->getModel()->getMesCommandes();
+      $params['TVA'] = $this->TVA;
       return $this->render('layout.html','commande.html',$params);
   }
 

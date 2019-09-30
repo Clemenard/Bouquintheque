@@ -1,6 +1,6 @@
 <div class="row">
-        <div class="col-md-6 ">
-    <div class="col-md-6 ">
+        <div class="col-md-8 ">
+    <div class="col-md-10 ">
         <?php if (!empty($message)): ?>
         <div class="alert alert-success">
             <?= $message ?><p><a href="<?= $url ?>produit/panier">Voir le Panier</a></p>
@@ -78,10 +78,12 @@
 endif ; ?>
     </div>
 </div>
-    <div class="col-md-6 ">
-            <h2 class="text-center w-100 m-5">Moyenne des notes : <?= $moyenneNotes['note'] ?></h2>
-            <div class="card border">
-                    <div class="card-body">
+    <div class="col-md-4 ">
+            <?php                        
+            if($membre): ?>
+            <h2 class="text-center w-100 m-5">Moyenne des notes : <?= number_format($moyenneNotes['note'],2) ?></h2>
+            <div class="card border  mb-3">
+                    <div class="card-body ">
                         <div class="card-title text-center">
                                 <h2><?= $note['titre']  ?> </h2>
                             <h5>Par <?= $membre->getField('pseudo') ?> le <?= $note['date'] ?> </h5>
@@ -89,8 +91,40 @@ endif ; ?>
         
                         <p class="text-center">Note : <?= $note['note'] ?></p>
                         <p class="text-center">Avis : <?= $note['description'] ?></p>
-                        <a href="<?= $url ?>note/notes/<?= $produit->getField('id_produit') ?>" class="btn btn-success"> Voir tous les avis</a>
                     </div>
-                </div>   
+                </div> 
+                <?php else: ?>
+                <h2 class="text-center w-100 m-5">Ce produit n'est pas encore noté</h2>
+                <?php endif; ?>
+                <a href="<?= $url ?>note/notes/<?= $produit->getField('id_produit') ?>" class="btn btn-success  mb-3"> Voir tous les avis</a>
+                        <h3 class=" mb-3">Donnez votre avis</h3>
+                        <?php if(isset($_SESSION['membre'])) : ?>
+                        <form method="post" action="<?= $url ?>note/notes/<?=$produit->getField('id_produit') ?>" enctype="multipart/form-data">
+      
+      
+                            <div class="form-group  mb-3">
+                                <div class="row">
+                                        <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>" class="form-control">
+                                        <input type="hidden" name="id_membre" value="<?= $_SESSION['membre']->getField('id_membre') ?>" class="form-control">
+                                        <label for="note">Note</label>
+                                        <input type="number" name="note" id="note"  class="form-control">
+                                        <label for="titre">Titre</label>
+                                        <input type="text" name="titre" id="titre"  class="form-control">
+                                        <label for="description">Avis</label>
+                                        <textarea name="description" id="description" class="form-control" rows="7"></textarea>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <input type="submit" class="btn btn-success mb-3" value="Laissez un avis">
+                                    </div>
+                                </div>
+                        </form>
+                        <?php else : ?>
+                          <p>Vous devez vous connecter pour laisser un avis</p>
+                          <li class="nav-item">
+                            <a class="nav-link" href="<?= $url ?>membre/connexion">Connexion</a>
+                          </li>
+                        <?php endif; ?>
+                      </div>
     </div>
 </div>

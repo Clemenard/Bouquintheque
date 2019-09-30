@@ -39,7 +39,7 @@
                     </td>
                     <td> <?= $somme_inter ?> €</td>
                 </tr>
-                <?php endfor; ?>
+                <?php endfor; ?> 
             </tbody>
             <tfoot>
                 <tr>
@@ -48,6 +48,28 @@
                         <?= $somme_totale ?> €
                     </td>
                 </tr>
+                <tr>
+                        <td colspan="4" class="text-right">Montant de la TVA</td>
+                        <td>
+                                + <?= $TVA*$somme_totale ?> € 
+                            </td>
+                    </tr>
+                    <?php $promotion=0;
+                    if($commande->getField('promotion')!='Aucune--0'):
+                    $promotion=explode('--',$commande->getField('promotion'))[1]; ?>
+                    <tr>
+                            <td colspan="4" class="text-right">Coupon promotion</td>
+                            <td>
+                                   - <?= $promotion ?> € 
+                                </td>
+                        </tr>
+                        <?php endif; ?>
+                    <tr>
+                            <td colspan="4" class="text-right">Prix TVA comprise</td>
+                            <td>
+                                    <?= (1+$TVA)*$somme_totale-$promotion ?> € TTC
+                                </td>
+                        </tr>
             </tfoot>
 
         </table>

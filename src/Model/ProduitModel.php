@@ -83,7 +83,10 @@ public function getResultSearch($term){
   $requete = "SELECT * FROM " .$this->getTable(true) . " WHERE LOWER(titre) LIKE CONCAT('%',:term,'%')
   OR LOWER(categorie) LIKE CONCAT('%',:term,'%')
   OR LOWER(description) LIKE CONCAT('%',:term,'%')
-  OR LOWER(couleur) LIKE CONCAT('%',:term,'%')";
+  OR LOWER(traducteur) LIKE CONCAT('%',:term,'%')
+  OR LOWER(collection) LIKE CONCAT('%',:term,'%')
+  OR LOWER(editeur) LIKE CONCAT('%',:term,'%')
+  OR LOWER(auteur) LIKE CONCAT('%',:term,'%')";
   $resultat = $this->getDb()->prepare($requete);
   $resultat->bindValue(':term',mb_strtolower($term),PDO::PARAM_STR);
   $resultat->execute();
