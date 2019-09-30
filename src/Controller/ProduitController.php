@@ -1,6 +1,8 @@
 <?php
 
 namespace Controller;
+use PromotionModel;
+use CommandeController;
 
 class ProduitController extends Controller{
 
@@ -95,6 +97,37 @@ class ProduitController extends Controller{
     return $this->render('layout.html','panier.html',$params);
 
   }
+  public function verifPromo(){
+      if(isset($_POST['validerpanier'])){
+        if(isset($_POST['promo']) && !empty($_POST['promo'])){
+          $promotion=$this->getModel('Model\PromotionModel')->selectPromotionByRef($_POST['promo']);
+          if($promotion==false ) {$erreur[]="Ce code promo n'existe pas.\n";}
+          else{
+          if(intval($_POST['sommeTotale'])<$promotion['panier_minimum']) $erreur[]="La valeur de votre panier est inférieure à ".$promotion['panier_minimum']." €.\n"; 
+          if($promotion['stock']<=0) $erreur[]="La promotion est épuisée.\n";
+          if($promotion['date_expiration']<date("Y-m-d") ) $erreur[]="La période de promotion a expiré le .".$promotion['date_expiration']."\n";}
+if(isset($erreur)){
+  $params['erreur'] = $erreur;
+  $params['title'] = 'Panier';
+  if(!empty($_SESSION['panier'])){
+    $params['content_panier'] = array();
+    for($i=0; $i< count($_SESSION['panier']['id_produit']); $i++){
+      $params['content_panier'][$i] = $this->getModel()->selectProduit($_SESSION['panier']['id_produit'][$i]);
+    }
+  }
+  return $this->render('layout.html','panier.html',$params);
+}
+          else{
+            $promotion['stock']-=1;
+            $_POST['sommeTotale']=intval($_POST['sommeTotale'])-$promotion['valeur'];
+
+            $promo=$_POST['promo']."--".$promotion['valeur'];
+            $this->redirect($this->url.'commande/afficheCommande/'.$promo.'/'.$_POST['sommeTotale']);
+          }
+        }
+      } 
+      } 
+
   public function creationPanier(){
     if(!isset($_SESSION['panier'])){
       $_SESSION['panier']['id_produit'] = array();

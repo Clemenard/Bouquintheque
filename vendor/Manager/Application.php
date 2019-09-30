@@ -40,7 +40,6 @@ public function run(){
       $a->$action($this->argument,$this->argumentBis);
     }
     else{
-      echo"bouh";
       require __DIR__.'/../../src/View/404.html';
     }
   }

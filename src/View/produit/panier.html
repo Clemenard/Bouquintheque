@@ -2,6 +2,13 @@
 <?php if (empty($_SESSION['panier'])) : ?>
     <div class="alert alert-info">Votre panier est vide :( </div>
 <?php else: ?>
+<?php if (isset($erreur)) : ?>
+<div class="alert alert-warning">
+    <?php foreach ($erreur as $e): ?>
+        <?= $e ?>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
@@ -45,7 +52,9 @@
     <div class="row">
         <?php if (isset($_SESSION['membre'])) : ?>
             <div class="col-12 text-center">
-                <form action="<?= $url ?>commande/afficheCommande" method="post">
+                <form action="<?= $url ?>produit/verifPromo" method="post">
+                    <input type="hidden" name="sommeTotale" value="<?= $somme_totale ?>">
+                    <label for="promo">Entrez votre code promotionel</label><input id="promo" name="promo" type="text">
                     <input type="submit" class="btn btn-success" name="validerpanier" value="Valider le panier">
                 </form>
             </div>

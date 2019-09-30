@@ -25,8 +25,15 @@ namespace Model;
   public function deleteAllPromotion(){
   return $this->deleteAll();
   }
-
-
+  public function selectPromotionByRef($ref){
+    $q=$this->execRequest('SELECT * FROM '.$this->getTable(true).' WHERE reference = :ref',array('ref'=>$ref));
+    $data=$q->fetch();
+    if(!$data){
+      return false;
+    }
+    else{
+    return $data;}
+  }
 
 }
 ?>

@@ -63,32 +63,31 @@ if(!empty($id)){
       return $this->render('layout.html','meilleursventes.html',$params);
   }
 
-  public function afficheCommande(){
-
-      if(isset($_POST['validerpanier'])){
-        $this->validationCommande();
-      }
-
+  public function afficheCommande($promo="Aucune",$sommeTotale=0){
+    echo $promo." ".$sommeTotale;
+    if($sommeTotale>0){
+        $this->validationCommande($promo,$sommeTotale);}
       $params['title'] = 'Mes Commandes';
       $params['commandes'] = $this->getModel()->getMesCommandes();
       return $this->render('layout.html','commande.html',$params);
   }
 
-  public function validationCommande(){
+  public function validationCommande($promo,$sommeTotale){
     // panier devient une commande
+    var_dump($_SESSION);
     if(isset($_SESSION['panier'])){
       // insertion de la commande
-      $montant = 0;
-      for($i=0; $i<count($_SESSION['panier']['id_produit']);$i++){
-        $montant += $_SESSION['panier']['prix'][$i] * $_SESSION['panier']['quantite'][$i];
-      }
+
       $infos = array(
         'id_membre' => $_SESSION['membre']->getField('id_membre'),
-        'montant' => $montant,
+        'montant' => $sommeTotale,
         'date_enregistrement' => date('Y-m-d H:i:s'),
-        'etat' => 'en cours de traitement'
+        'etat' => 'en cours de traitement',
+        'promotion' => $promo
       );
+      var_dump($infos);
       $this->id_commande = $this->getModel()->registerCommande($infos);
+      echo($this->id_commande);
       // $membre = new Model/Membre;
       // $_SESSION['membre']->setField('experience',$montant+$_SESSION['membre']->getField('experience'));
       // $membre->update(array('experience'=>$_SESSION['membre']->getField('experience')));

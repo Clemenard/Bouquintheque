@@ -11,6 +11,7 @@
                     <th>Date de commande</th>
                     <th>Montant</th>
                     <th>Etat</th>
+                    <th>Promotion</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                         <td><?= date('d/m/Y à H:i:s',strtotime($commande->getField('date_enregistrement'))) ?></td>
                         <td><?= $commande->getField('montant') ?> €</td>
                         <td><?= $commande->getField('etat') ?></td>
+                        <td><?= $commande->getField('promotion') ?> €</td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
