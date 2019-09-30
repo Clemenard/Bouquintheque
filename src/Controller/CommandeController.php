@@ -63,8 +63,7 @@ if(!empty($id)){
       return $this->render('layout.html','meilleursventes.html',$params);
   }
 
-  public function afficheCommande($promo="Aucune",$sommeTotale=0){
-    echo $promo." ".$sommeTotale;
+  public function afficheCommande($sommeTotale=0,$promo="Aucune"){
     if($sommeTotale>0){
         $this->validationCommande($promo,$sommeTotale);}
       $params['title'] = 'Mes Commandes';
@@ -85,9 +84,7 @@ if(!empty($id)){
         'etat' => 'en cours de traitement',
         'promotion' => $promo
       );
-      var_dump($infos);
       $this->id_commande = $this->getModel()->registerCommande($infos);
-      echo($this->id_commande);
       // $membre = new Model/Membre;
       // $_SESSION['membre']->setField('experience',$montant+$_SESSION['membre']->getField('experience'));
       // $membre->update(array('experience'=>$_SESSION['membre']->getField('experience')));

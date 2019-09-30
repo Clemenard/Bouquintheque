@@ -103,6 +103,8 @@ class ProduitController extends Controller{
           $promotion=$this->getModel('Model\PromotionModel')->selectPromotionByRef($_POST['promo']);
           if($promotion==false ) {$erreur[]="Ce code promo n'existe pas.\n";}
           else{
+            $isUsed=$this->getModel('Model\PromotionModel')->isPromotionUsed($promotion['id_promotion'],$_SESSION['membre']->getField('id_membre'));
+            if($isUsed) {var_dump($isUsed);$erreur[]="Vous avez déja utilisé ce code promo.\n";}
           if(intval($_POST['sommeTotale'])<$promotion['panier_minimum']) $erreur[]="La valeur de votre panier est inférieure à ".$promotion['panier_minimum']." €.\n"; 
           if($promotion['stock']<=0) $erreur[]="La promotion est épuisée.\n";
           if($promotion['date_expiration']<date("Y-m-d") ) $erreur[]="La période de promotion a expiré le .".$promotion['date_expiration']."\n";}
@@ -118,12 +120,20 @@ if(isset($erreur)){
   return $this->render('layout.html','panier.html',$params);
 }
           else{
+            $infos = array(
+              'id_membre' => $_SESSION['membre']->getField('id_membre'),
+              'id_promotion' => $promotion['id_promotion']
+            );
+            $isUsed=$this->getModel('Model\PromotionModel')->usePromo($infos);
             $promotion['stock']-=1;
             $_POST['sommeTotale']=intval($_POST['sommeTotale'])-$promotion['valeur'];
 
             $promo=$_POST['promo']."--".$promotion['valeur'];
-            $this->redirect($this->url.'commande/afficheCommande/'.$promo.'/'.$_POST['sommeTotale']);
+            $this->redirect($this->url.'commande/afficheCommande/'.$_POST['sommeTotale'].'/'.$promo);
           }
+        }
+        else{
+        $this->redirect($this->url.'commande/afficheCommande/'.$_POST['sommeTotale'].'/Aucune--Zéro'); 
         }
       } 
       } 
