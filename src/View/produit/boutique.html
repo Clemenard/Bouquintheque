@@ -33,7 +33,7 @@
                                 <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid">
                             </a>
                         </p>
-                        <p class="text-center"><?= $produit->getField('prix') ?> €
+                        <p class="text-center"><?= number_format($produit->getField('prix')*(1+$TVA),2) ?> €
                         </p>
                         <p class="text-center">
                             <a class="btn btn-success" href="<?= $url ?>produit/affiche/<?= $produit->getField('id_produit') ?>">Voir les détails &raquo; </a>

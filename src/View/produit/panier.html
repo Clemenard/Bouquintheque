@@ -42,9 +42,21 @@
                 <tr>
                     <td colspan="4" class="text-right">Montant total pour <?= $nb ?> article(s)</td>
                     <td>
-                        <?= $somme_totale ?> €
+                        <?= $somme_totale ?> € HT
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="4" class="text-right">Montant de la TVA</td>
+                    <td>
+                            <?= $TVA*$somme_totale ?> € TTC
+                        </td>
+                </tr>
+                <tr>
+                        <td colspan="4" class="text-right">Prix TVA comprise</td>
+                        <td>
+                                <?= (1+$TVA)*$somme_totale ?> € TTC
+                            </td>
+                    </tr>
             </tfoot>
 
         </table>

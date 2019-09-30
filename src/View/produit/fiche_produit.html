@@ -13,7 +13,7 @@
                 </div>
                 <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid">
                 <hr>
-
+                <p class="text-center">Prix : <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
                 <p class="text-center">Auteur : <?= $produit->getField('auteur') ?></p>
                 <p class="text-center">Catégorie : <?= $produit->getField('categorie') ?></p>
                 <p class="text-center">Date de parution : <?= $produit->getField('date_parution') ?></p>

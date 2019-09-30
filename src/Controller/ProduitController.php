@@ -5,15 +5,17 @@ use PromotionModel;
 use CommandeController;
 
 class ProduitController extends Controller{
-
+public $TVA=0.2;
 
   public function all(){
     $produits = $this->getModel()->selectAllProduit();
     $categories = $this->getModel()->getAllCategories();
+    
     $params = array(
       'produits' => $produits,
-      'categories' => $categories
+      'categories' => $categories,
     );
+    $params['TVA'] = $this->TVA;
     return $this->render('layout.html','boutique.html',$params);
   }
 
@@ -28,6 +30,7 @@ class ProduitController extends Controller{
       'categories' => $categories,
       'selected' =>$selected
     );
+    $params['TVA'] = $this->TVA;
     return $this->render('layout.html','boutique.html',$params);
   }
   // affiche une fiche produit
@@ -54,6 +57,7 @@ class ProduitController extends Controller{
       'membre' => $membre,
       'moyenneNotes' => $moyenneNotes
     );
+    $params['TVA'] = $this->TVA;
     return $this->render('layout.html','fiche_produit.html',$params);
 
   }
@@ -94,6 +98,7 @@ class ProduitController extends Controller{
       }
     }
     $params['title'] = 'Panier';
+    $params['TVA'] = $this->TVA;
     return $this->render('layout.html','panier.html',$params);
 
   }
@@ -111,6 +116,7 @@ class ProduitController extends Controller{
 if(isset($erreur)){
   $params['erreur'] = $erreur;
   $params['title'] = 'Panier';
+  $params['TVA'] = $this->TVA;
   if(!empty($_SESSION['panier'])){
     $params['content_panier'] = array();
     for($i=0; $i< count($_SESSION['panier']['id_produit']); $i++){

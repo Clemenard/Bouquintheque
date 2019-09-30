@@ -24,7 +24,7 @@ public function render($layout,$view,$params){
   $pathLayout=$dirView.$layout;
   $params['url']=$this->url;
   $params['nb']=0;
-  if(isset($_SESSION['panier']) && count($_SESSION['panier']['id_produit']>0)){
+  if(isset($_SESSION['panier']) && count($_SESSION['panier']['id_produit'])>0 ){
   $params['nb']=array_sum($_SESSION['panier']['quantite']);
   }
   extract($params);
