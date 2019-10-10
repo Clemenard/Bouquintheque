@@ -26,11 +26,11 @@
                 <div class="card mt-3 border alert-light">
                     <div class="card-body">
                         <div class="card-title text-center">
-                            <h2><?= $produit->getField('titre') ?></h2>
+                            <h2 title="<?= $produit->getField('titre')?>"><?= substr($produit->getField('titre'),0,25) ?></h2>
                         </div>
                         <p>
                             <a href="<?= $url ?>produit/affiche/<?= $produit->getField('id_produit') ?>">
-                                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid">
+                                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre')?>" class="card-img img-fluid">
                             </a>
                         </p>
                         <p class="text-center"><?= number_format($produit->getField('prix')*(1+$TVA),2) ?> €

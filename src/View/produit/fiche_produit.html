@@ -11,7 +11,7 @@
                 <div class="card-title text-center">
                     <h2><?= $produit->getField('titre') ?></h2>
                 </div>
-                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid">
+                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre') ?>" class="h-300" >
                 <hr>
                 <p class="text-center">Prix : <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
                 <p class="text-center">Auteur : <?= $produit->getField('auteur') ?></p>
@@ -24,7 +24,7 @@
                 <p class="text-center">Synopsis : <?= $produit->getField('description') ?></p>
                 <p class="text-center">Traducteur : <?= $produit->getField('traducteur') ?></p>
                 <p class="text-center"> Editeur : <?= $produit->getField('editeur') ?> </p>
-                <p class="text-center">Collection : <?= $produit->getField('collection') ?> €</p>
+                <p class="text-center">Collection : <?= $produit->getField('collection') ?> </p>
                 <hr>
                 <?php if ( $produit->getField('stock') > 0 ) :?>
                 <em>Nombre de produit(s) disponible(s) : <?= $produit->getField('stock') ?></em>

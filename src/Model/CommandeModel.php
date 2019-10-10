@@ -14,7 +14,8 @@ class CommandeModel extends Model{
   }
 
   public function getBestSales(){
-    $requete = "SELECT id_produit,SUM(quantite) AS nb_ventes FROM bouquintheque_details_" . $this->getTable(). " GROUP BY id_produit ORDER BY nb_ventes DESC LIMIT 10";
+    $requete = "SELECT id_produit,SUM(quantite) AS nb_ventes FROM bouquintheque_details_" . $this->getTable(). "
+     GROUP BY id_produit ORDER BY nb_ventes DESC LIMIT 10";
     $resultat = $this->getDb()->prepare($requete);
     $resultat->execute();
     $donnees = $resultat->fetchAll();

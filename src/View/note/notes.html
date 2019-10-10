@@ -14,7 +14,7 @@
                   </div>
                  <h2>Titre : <?= $note->getField('titre') ?></h2>
                 <p> Contenu : <?= $note->getField('description') ?></p>
-              </div>
+              </div> 
                 </div>
 <?php endforeach; ?>
                 <div>
@@ -25,6 +25,8 @@
 
                       <div class="form-group">
                           <div class="row">
+                              <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>" class="form-control">
+                              <input type="hidden" name="id_membre" value="<?= $_SESSION['membre']->getField('id_membre') ?>" class="form-control">
                                   <label for="note">Note</label>
                                   <input type="number" name="note" id="note" value="<?= $note_actuelle['note'] ?? '' ?>" class="form-control">
                                   <label for="titre">Titre</label>
