@@ -55,7 +55,7 @@ if(!empty($id)){
 
   public function afficheMeilleursVentes(){
     $params['meilleurs_ventes'] = $this->getModel()->getBestSales();
-    $params['title'] = 'Meilleurs ventes';
+    $params['title'] = 'Meilleures ventes';
     $i=0;
     foreach ($params['meilleurs_ventes'] as $produit){
       $produitbis=$this->getModel('Model\ProduitModel')->selectProduit($produit['id_produit']);

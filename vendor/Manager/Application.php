@@ -9,24 +9,24 @@ final class Application{
 
 public function __construct(){
   $tab=explode('/',$_SERVER['REQUEST_URI']);
-  if(!empty($tab[2]) && file_exists(__DIR__ . '/../../src/Controller/'.ucfirst($tab[2]).'Controller.php')){
-    $this->controller = 'Controller\\'.ucfirst($tab[2]).'Controller';
+  if(!empty($tab[3]) && file_exists(__DIR__ . '/../../src/Controller/'.ucfirst($tab[3]).'Controller.php')){
+    $this->controller = 'Controller\\'.ucfirst($tab[3]).'Controller';
   }
   else{
   $this->controller =  'Controller\ProduitController';
   }
-  if(!empty($tab[3])) {
-    $this->action = $tab[3];
+  if(!empty($tab[4])) {
+    $this->action = $tab[4];
   }
   else{
     $this->controller =  'Controller\ProduitController';
     $this->action = 'all';
   }
-  if(!empty($tab[4])) {
-    $this->argument = urldecode($tab[4]);
-  }
   if(!empty($tab[5])) {
-    $this->argumentBis = urldecode($tab[5]);
+    $this->argument = urldecode($tab[5]);
+  }
+  if(!empty($tab[6])) {
+    $this->argumentBis = urldecode($tab[6]);
   }
 
 }

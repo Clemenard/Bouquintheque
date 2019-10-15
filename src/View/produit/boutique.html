@@ -13,12 +13,11 @@
     </div>
     <div class="col-sm-9">
         <div class="jumbotron flamme">
-            <h1>Bienvenue dans le temple du savoir</h1>
-            <p>Des prix défiant toute concurrence!</p>
-            <p >
-                <a  href="<?= $url ?>commande/afficheMeilleursVentes">Nos meilleurs ventes</a>
-            </p>
+            <h1 class="mb-5">Bienvenue dans le temple du savoir</h1>
+            <h2 class="mb-3">Des prix défiant toute concurrence!</h2>
         </div>
+        <div class='col-12 row'> <a class="btn btn-success col-4 offset-4"  href="<?= $url ?>commande/afficheMeilleursVentes">Nos meilleures ventes</a></div>
+        
         <div class="row">
 
             <?php foreach($produits as $produit) : ?>
