@@ -1,0 +1,8 @@
+{
+  "navbar": { 
+      "boutique":"Shop",
+      "inscription":"Sign In",
+      "connexion":"Log In",
+      "deconnexion":"Log Out"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "navbar": { 
+      "boutique":"Boutique",
+      "inscription":"Inscription",
+      "connexion":"Connexion",
+      "deconnexion":"Deconnexion"
+  }
+}
