@@ -29,7 +29,7 @@
                         </div>
                         <p>
                             <a href="<?= $url ?>produit/affiche/<?= $produit->getField('id_produit') ?>">
-                                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre')?>" class="card-img img-fluid">
+                                <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre')?>" class="card-img img-fluid">
                             </a>
                         </p>
                         <p class="text-center"><?= number_format($produit->getField('prix')*(1+$TVA),2) ?> €

@@ -15,3 +15,7 @@ $(document).ready(function(){
       });
   }
 });
+function setLang(lang){
+  Cookies.set('lng', lang,{ expires: 7 });
+  window.location = window.location;
+}

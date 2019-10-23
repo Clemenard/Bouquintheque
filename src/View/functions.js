@@ -14,4 +14,9 @@ $(document).ready(function(){
         reader.readAsDataURL(e.target.files[0]);
       });
   }
-});
+})
+function setLang(lang){
+  console.log('a')
+  document.cookie = "lng="+lang;
+  window.location = window.location;
+}

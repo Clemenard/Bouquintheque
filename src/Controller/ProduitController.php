@@ -48,7 +48,7 @@ public $TVA=0.2;
       $message = 'Le produit a été ajouté au panier';
     }
 
-    // template : fiche_produit.html
+    // template : ficheProduit.html
     $params = array(
       'produit' => $produit,
       'message' => $message,
@@ -58,7 +58,7 @@ public $TVA=0.2;
       'moyenneNotes' => $moyenneNotes
     );
     $params['TVA'] = $this->TVA;
-    return $this->render('layout.html','fiche_produit.html',$params);
+    return $this->render('layout.html','ficheProduit.html',$params);
 
   }
 
@@ -275,7 +275,7 @@ if(isset($erreur)){
     if(!empty($_FILES['photo']['name'])){
       $nom = $_POST['reference'].'_'.$_FILES['photo']['name'];
       $_POST['photo'] = $nom;
-      $pathPhoto = __DIR__ . '/../../web/photo/' . $nom;
+      $pathPhoto = __DIR__ . '/../../web/photo/products' . $nom;
       move_uploaded_file($_FILES['photo']['tmp_name'],$pathPhoto);
     }
   }

@@ -14,10 +14,7 @@ i18next.use(window.i18nextXHRBackend)
                 useOptionsAttr: true,
                 parseDefaultValueFromContent: true
             });
-            console.log("a")
             $(document).localize();
-            $("[data-toggle='tooltip']").tooltip('dispose');
-            $("[data-toggle='tooltip']").tooltip();
         });
 
     function getCookie(cname) {

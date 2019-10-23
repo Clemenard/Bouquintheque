@@ -11,7 +11,7 @@
                 <div class="card-title text-center">
                     <h2><?= $produit->getField('titre') ?></h2>
                 </div>
-                <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre') ?>" class="h-300" >
+                <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre') ?>" class="h-300" >
                 <hr>
                 <p class="text-center">Prix : <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
                 <p class="text-center">Auteur : <?= $produit->getField('auteur') ?></p>
@@ -62,7 +62,7 @@
 
         <div class="card m-1" style="width: 18rem;">
             <a href="<?= $url ?>produit/affiche/<?= $autreProduit->getField('id_produit') ?>">
-                <img src="<?= $url ?>photo/<?= $autreProduit->getField('photo') ?>" alt="" class="card-img img-fluid">
+                <img src="<?= $url ?>photo/products/<?= $autreProduit->getField('photo') ?>" alt="" class="card-img img-fluid">
             </a>
             <div class="card-body">
                 <h3><?= $autreProduit->getField('titre') ?></h3>

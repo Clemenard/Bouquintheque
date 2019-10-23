@@ -1,30 +1,30 @@
-<h2><?= $title ?></h2>
+<h2 data-i18n="layout.admin.produit"><?= $title ?></h2>
 <?php
 
 if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
 
 ?>
-    <a href="<?= $url ?>produit/ajoutProduit" class="btn btn-success">Ajouter un produit</a>
+    <a href="<?= $url ?>produit/ajoutProduit" class="btn btn-success" data-i18n="produit.addProduct.page">Ajouter un produit</a>
     <?php if ($produits!=false) : ?>
     <div class="table-responsive">
         
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                  <th><a href="<?= $url ?>produit/adminProduit/id_produit/<?= $desc ?>">ID</a></th>
-                  <th><a href="<?= $url ?>produit/adminProduit/reference/<?= $desc ?>">Ref.</a></th>
-                  <th><a href="<?= $url ?>produit/adminProduit/categorie/<?= $desc ?>">Categ</a></th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th><a href="<?= $url ?>produit/adminProduit/auteur/<?= $desc ?>">Auteur</a></th>
-                    <th><a href="<?= $url ?>produit/adminProduit/date_parution/<?= $desc ?>">Date parution</a></th>
-                    <<th><a href="<?= $url ?>produit/adminProduit/traducteur/<?= $desc ?>">Traducteur</a></th>
-                    <th><a href="<?= $url ?>produit/adminProduit/date_traduction/<?= $desc ?>">Date traduction</a></th>
-                    <th><a href="<?= $url ?>produit/adminProduit/editeur/<?= $desc ?>">Editeur</a></th>
-                    <th><a href="<?= $url ?>produit/adminProduit/collection/<?= $desc ?>">Collection</a></th>
-                    <th>Photo</th> 
-                    <th><a href="<?= $url ?>produit/adminProduit/prix/<?= $desc ?>">Prix</a></th>            
-                    <th><a href="<?= $url ?>produit/adminProduit/stock/<?= $desc ?>">Stock</a></th>
+                  <th><a href="<?= $url ?>produit/adminProduit/id_produit/<?= $desc ?>" data-i18n="produit.adminProduit.id">ID</a></th>
+                  <th><a href="<?= $url ?>produit/adminProduit/reference/<?= $desc ?>" data-i18n="produit.adminProduit.reference">Ref.</a></th>
+                  <th><a href="<?= $url ?>produit/adminProduit/categorie/<?= $desc ?>" data-i18n="produit.adminProduit.categorie">Categ</a></th>
+                    <th data-i18n="produit.adminProduit.titre">Titre</th>
+                    <th data-i18n="produit.adminProduit.description">Description</th>
+                    <th><a href="<?= $url ?>produit/adminProduit/auteur/<?= $desc ?>" data-i18n="produit.adminProduit.auteur">Auteur</a></th>
+                    <th><a href="<?= $url ?>produit/adminProduit/date_parution/<?= $desc ?>" data-i18n="produit.adminProduit.dateParution">Date parution</a></th>
+                    <<th><a href="<?= $url ?>produit/adminProduit/traducteur/<?= $desc ?>" data-i18n="produit.adminProduit.traducteur">Traducteur</a></th>
+                    <th><a href="<?= $url ?>produit/adminProduit/date_traduction/<?= $desc ?>" data-i18n="produit.adminProduit.dateTraduction">Date traduction</a></th>
+                    <th><a href="<?= $url ?>produit/adminProduit/editeur/<?= $desc ?>" data-i18n="produit.adminProduit.editeur">Editeur</a></th>
+                    <th><a href="<?= $url ?>produit/adminProduit/collection/<?= $desc ?>" data-i18n="produit.adminProduit.collection">Collection</a></th>
+                    <th data-i18n="produit.adminProduit.photo">Photo</th> 
+                    <th><a href="<?= $url ?>produit/adminProduit/prix/<?= $desc ?>" data-i18n="produit.adminProduit.prix">Prix</a></th>            
+                    <th><a href="<?= $url ?>produit/adminProduit/stock/<?= $desc ?>" data-i18n="produit.adminProduit.stock">Stock</a></th>
                     <th colspan="2">Actions</th>
                 </tr>
             </thead>
@@ -37,7 +37,7 @@ if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
                         <?php
                         foreach($champs as $index => $value):
                             if ($index == 'photo') :
-                                $value = '  <a href="'. $url .'produit/affiche/'. $produit->getField('id_produit').'"><img src="'. $url .'photo/'. ($produit->getField('photo')) .'" class="thumbnail img-fluid"></a>';
+                                $value = '  <a href="'. $url .'produit/affiche/'. $produit->getField('id_produit').'"><img src="'. $url .'photo/products/'. ($produit->getField('photo')) .'" class="thumbnail img-fluid"></a>';
                             endif;
                             if ($index == 'description' && strlen($value)>75) : ?>
                             <td class='desc-produit'><?= substr($value,0,75).' ...' ?></td>
