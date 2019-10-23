@@ -7,23 +7,49 @@ body{
 .bg-dark{
   color : lightgrey;
 }
-.active{
-background-color:#155724!important;
+.active, .btn-success, .btn-success a, .dropdown-menu {
+background-color:rgb(101,64,46)!important;
+color:white;
 }
+.btn-success{
+border : rgb(101,64,46);}
 a{
-color:#155724;
+color:rgb(101,64,46);
 }
 a .active{
 color:white;
 }
-.flamme {
-  background-image: url('../photo/flamme.gif')!important;
+
+a:hover, .btn-success:hover, a .active:hover, .dropdown-item a:hover{
+  color:rgb(51,148,65);
+  }
+
+  h1,h2,h3,h4{
+    color:rgb(101,64,46);  
+  }
+  .flamme h1,.flamme h2,.flamme h3,.flamme h4{
+    color:white;  
+  }
+
+.flamme,#meilleursventes, .btn-success p {
   font-weight: bold;
   color:white!important;
-  text-shadow: rgb(204, 0, 0) 0.1em 0.1em 0.2em;
+  text-shadow: rgb(101,64,46) 0.2em 0.2em 0.4em;
   width: 100%;
+}
+.jumbotron{
+  background-image: url('../photo/banniere.jpg')!important;
 }
 
 .card-img{
 max-height:250px;
+}
+.dropdown-item{
+  border-bottom:rgb(51,148,65) solid 1px;
+}
+.thumbnail{
+  max-height:68px;
+}
+.table-striped tbody tr:nth-of-type(odd){
+  background-color:rgba(101,64,46,0.5);
 }

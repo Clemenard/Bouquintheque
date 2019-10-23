@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md btn-success fixed-top ">
         <a class="navbar-brand" href="<?= $url ?>">La Bouquinthèque</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -27,10 +27,10 @@
             <?php if( !isset($_SESSION['membre'])) : ?>
 
             <li class="nav-item">
-              <a class="nav-link" href="<?= $url ?>membre/connexion">Connexion</a>
+              <a  href="<?= $url ?>membre/connexion">Connexion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= $url ?>membre/inscription">Inscription</a>
+                <a  href="<?= $url ?>membre/inscription">Inscription</a>
             </li>
             <?php else : ?>
 
@@ -41,7 +41,6 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
                     <a class="dropdown-item" href="<?= $url ?>membre/profil">Profil</a>
                     <a class="dropdown-item" href="<?= $url ?>commande/afficheCommande">Commandes</a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="<?= $url?>membre/deconnexion">Déconnexion</a>
                 </div>
             </li>
@@ -65,7 +64,7 @@
             <?php endif; ?>
 
             <li class="nav-item">
-                <a class="nav-link" href="<?= $url ?>produit/panier">
+                <a  href="<?= $url ?>produit/panier">
                     <i class="fa fa-shopping-cart"></i> Panier
                     <?php
                     if (!empty($nb)):
@@ -92,9 +91,10 @@
         <?= $content ?>
 
     </div>
-    <footer class="bg-dark ">
+    <footer class="btn-success ">
       <p> &copy 2019 Bouquinthèque - Clément Menard - powered by FredoFramework&copy;</p>
         <p>Ce site est une maquette, il ne permet nullement d'opérer des transactions</p>
+        <p><a class="btn-success" href="<?= $url ?>divers/quisommesnous">Qui sommes nous?</a></p>
     </footer>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
