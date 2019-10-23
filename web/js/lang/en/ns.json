@@ -1,8 +1,20 @@
 {
-  "navbar": { 
-      "boutique":"Shop",
-      "inscription":"Sign In",
-      "connexion":"Log In",
-      "deconnexion":"Log Out"
-  }
+    "layout": {
+        "admin": {
+            "site":"Website Management",
+            "produits": "Products Management",
+            "membres": "Members Management",
+            "commandes": "Orders  Management",
+            "promotions": "Pricecuts Management"
+
+        },
+        "boutique": "Shop",
+        "inscription": "Sign In",
+        "connexion": "Log In",
+        "deconnexion": "Log Out",
+        "panier": "Cart",
+        "commandes": "Orders",
+        "profil": "Profile",
+        "rechercher": "Search"
+    }
 }

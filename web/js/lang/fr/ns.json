@@ -1,8 +1,20 @@
 {
-  "navbar": { 
-      "boutique":"Boutique",
-      "inscription":"Inscription",
-      "connexion":"Connexion",
-      "deconnexion":"Deconnexion"
-  }
+    "layout": {
+        "admin": {
+            "site":"Gestion du site",
+            "produits": "Gestion des produits",
+            "membres": "Gestion des membres",
+            "commandes": "Gestion des commandes",
+            "promotions": "Gestion des promotions"
+
+        },
+        "boutique": "Boutique",
+        "inscription": "Inscription",
+        "connexion": "Connexion",
+        "deconnexion": "Déconnexion",
+        "panier": "Panier",
+        "commandes": "Commandes",
+        "profil": "Profil",
+        "rechercher": "Rechercher"
+    }
 }
