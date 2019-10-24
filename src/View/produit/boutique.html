@@ -2,10 +2,11 @@
 
     <div class="col-sm-3">
         <div class="list-group">
-            <p class="list-group-item text-center">CATEGORIES</p>
-            <a href="<?= $url ?>produit/all" class="list-group-item <?= (!isset($selected)) ? 'active' : '' ?>">Toutes</a>
+            <p class="list-group-item text-center" data-i18n="produit.boutique.categories">CATEGORIES</p>
+            <a href="<?= $url ?>produit/all" class="list-group-item <?= (!isset($selected)) ? 'active' : '' ?>"  data-i18n="produit.boutique.categories.toutes">Toutes</a>
             <?php foreach($categories as $cat) : ?>
-                <a class="list-group-item <?= (isset($selected) && $selected == $cat['categorie']) ? 'active' : '' ?>" href="<?= $url ?>produit/afficheCategorie/<?= $cat['categorie'] ?>"><?= ucfirst($cat['categorie']) ?></a>
+                <a class="list-group-item <?= (isset($selected) && $selected == $cat['categorie']) ? 'active' : '' ?>" href="<?= $url ?>produit/afficheCategorie/<?= $cat['categorie'] ?>"  data-i18n="produit.boutique.categories.<?= $cat['categorie']?>">
+                    <?= ucfirst($cat['categorie']) ?></a>
             <?php endforeach; ?>
 
         </div>
@@ -13,10 +14,10 @@
     </div>
     <div class="col-sm-9">
         <div class="jumbotron flamme">
-            <h1 class="mb-5">Bienvenue dans le temple du savoir</h1>
-            <h2 class="mb-3">Des prix défiant toute concurrence!</h2>
+            <h1 class="mb-5"  data-i18n="produit.boutique.titre">Bienvenue dans le temple du savoir</h1>
+            <h2 class="mb-3"  data-i18n="produit.boutique.soustitre">Des prix défiant toute concurrence!</h2>
         </div>
-        <div class='col-12 row'> <a class="btn btn-success col-4 offset-4"  href="<?= $url ?>commande/afficheMeilleursVentes">Nos meilleures ventes</a></div>
+        <div class='col-12 row'> <a class="btn btn-success col-4 offset-4"  href="<?= $url ?>commande/afficheMeilleursVentes"  data-i18n="produit.boutique.meilleursventes">Nos meilleures ventes</a></div>
         
         <div class="row">
 
@@ -35,7 +36,7 @@
                         <p class="text-center"><?= number_format($produit->getField('prix')*(1+$TVA),2) ?> €
                         </p>
                         <p class="text-center">
-                            <a class="btn btn-success" href="<?= $url ?>produit/affiche/<?= $produit->getField('id_produit') ?>">Voir les détails &raquo; </a>
+                            <a class="btn btn-success" href="<?= $url ?>produit/affiche/<?= $produit->getField('id_produit') ?>" data-i18n="produit.boutique.details">Voir les détails &raquo; </a>
                         </p>
                     </div>
                 </div>

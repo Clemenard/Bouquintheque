@@ -23,10 +23,10 @@ public function __construct(){
     $this->action = 'all';
   }
   if(!empty($tab[4+$this->inc])) {
-    $this->argument = urldecode($tab[5]);
+    $this->argument = urldecode($tab[4+$this->inc]);
   }
   if(!empty($tab[5+$this->inc])) {
-    $this->argumentBis = urldecode($tab[6]);
+    $this->argumentBis = urldecode($tab[5+$this->inc]);
   }
 
 }

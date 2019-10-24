@@ -41,7 +41,19 @@
             "page" :"Ajouter un produit",
             "add":"Ajouter ce produit"
         },
-        "boutiqueProduit":{},
+        "boutique":{
+            "categories":{
+                "toutes" : "Toutes",
+                "BandeDessinée":"Bande Dessinée",
+                "Cuisine":"Cuisine",
+                "Roman":"Romans",
+                "Theatre":"Theatre"
+            },
+            "titre":"Bienvenue dans le temple du savoir",
+            "soustitre":"Des prix défiant toute concurrence!",
+            "meilleursventes" : "Nos meilleures ventes",
+            "details" : "Voir les détails"
+        },
         "ficheProduit":{}
 
     },

@@ -41,24 +41,36 @@
                 "page" :"Add a product",
                 "add":"Add this product"
             },
-            "boutiqueProduit":{},
+            "boutique":{
+                "categories":{
+                    "toutes" : "All",
+                    "BandeDessinée":"Comic books",
+                    "Cuisine":"Cooking",
+                    "Roman":"Novels",
+                    "Theatre":"Theatre"
+                },
+                "titre":"Welcome in knowledge's sanctuary",
+                "soustitre":"Best prices in the world!",
+                "meilleursventes" : "Our best sales",
+                "details" : "See the details"
+            },
             "ficheProduit":{}
     
         },
         "divers":{
     "quisommesnous":{
-    "h1":"Une solide expérience",
-    "h2":"Des équipes de libraires pour vous conseiller",
-    "h3a":"Conseils libraires",
-    "h3b":"Un service client de qualité",
-    "h4a":"Service clients",
-    "h4b":"Une équipe logistique performante",
-    "p1a":"Depuis 1927, Bouquinthèque a développé un réseau de 11 librairies en Yvelines et récemment dans le bassin de l'Oise.Ses libraires sont reconnues pour leur expertise et leur passion des livres, dans les domaines de la connaissance comme du loisir.En lançant Bouquinthèque.fr en 2077, Bouquinthèque a acquis une solide expérience du e-commerce.",
-    "p1b":"Permettre à chaque lecteur de trouver ses livres et à chaque livre de trouver ses lecteurs est l'objectif quotidien de chacun de ses 2 collaborateur.",
-    "p2":"Dans nos librairies situées en Yvelines, ce sont plus de 18 libraires et papetiers qui vous conseillent et partagent au quotidien leurs coups de coeur.",
-    "p3":"Nos assistants commerciaux et opérateurs de saisie s’assurent de la satisfaction client et apportent des réponses et des solutions concrètes aux problèmes rencontrés(suivi des commandes, délai de livraison). Nous offrons la possibilité à nos clients de recevoir en ligne nos conseils de libraires, adaptés à leurs besoins et àleurs envies notamment grâce à l’envoi de nos newletters.",
-    "p4a":"Premier et dernier maillon de la chaîne, nos équipes logistiques sont au cœur de la satisfaction de nos clients.",
-    "p4b":"L’envie de travailler en équipe unit ses collaborateurs aux parcours et formations de tout horizon. Chaque jour, nos équipes logistiques font preuve de rigueur et d’organisation pour garantir le meilleur traitement possible des flux de produits livres ainsi que l’optimisation du stockage, du transport et de la distribution aux clients magasin et professionnels."
+    "h1":"A wide knowledge",
+    "h2":"Teams of booksellers at your service",
+    "h3a":"Booksellers advices",
+    "h3b":"Customers service comes first",
+    "h4a":"Customers service",
+    "h4b":"An efficient logistic team",
+    "p1a":"Since 1927, Bouquinthèque has developped a web of 11 bookshops in Yvelines, and recently in the Oise. His bookshoppers are acknowledged for their passion and knowledge, in science as in leisury.When launching bouquinthèque.fr in 2077, Bouquinthèque has acquired a firm knowledge of e-shopping.",
+    "p1b":"Allowing each reader to find his book and each book to find his reader is the day-by-day goal of our 2-members team.",
+    "p2":"In our Yvelines's bookshops, more than 18 bookshoppers give advices and share theirs likings",
+    "p3":"Ours commercial helpers and data entry clerks give you total satisfaction and do their best to help you to solve the problems you can encounter(orders following, shipping delays). We offer to our customers the possibility to receive advices from ours bookshoppers, corresponding to theirs needs by the help of the newsletter.",
+    "p4a":"First and last link in the chain, our logistical teams are in the midst of the customer's satisfaction.",
+    "p4b":"The love of teamworking link our coworkers, comming from a wide broad of cursus. Each day, our logistical team give proofs of rigour and organisation to allow the best service to be given by optimizing the stocks and the shippings, for professionals and individuals"
     }
         }
     }
