@@ -8,6 +8,15 @@
             "promotions": "Pricecuts Management"
 
         },
+        "modal": {
+            "connect":{
+              "1":"",  
+              "2":"Log in",
+              "3":"or",
+              "4":"sign in",
+              "5":"to check out your cart."
+            }
+        },
         "boutique": "Shop",
         "inscription": "Sign In",
         "connexion": "Log In",
@@ -54,7 +63,27 @@
                 "meilleursventes" : "Our best sales",
                 "details" : "See the details"
             },
-            "ficheProduit":{}
+            "ficheProduit":{
+                "associes1":"Theses books from the category",
+                "associes2": "could please you.",
+                "ajout":"Add to the cart",
+                "rupture":"This product is currently sold out."
+            },
+            "panier":{
+                "quantite":"Quantity",
+                "prixUnite":"Price for one",
+                "prixTotal":"Price for all",
+                "valider":"Make your purchase",
+                "vider":"Empty the cart",
+                "mentionPrix":{
+                    "1":"Total price for",
+                    "2":"articles."
+                },
+                "montantTVA":"Taxes",
+                "avecTVA":"Price with taxes include",
+                "codePromo":"Input your coupon code"
+            },
+"recherche":{}
     
         },
         "divers":{

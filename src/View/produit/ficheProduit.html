@@ -13,21 +13,20 @@
                 </div>
                 <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre') ?>" class="h-300" >
                 <hr>
-                <p class="text-center">Prix : <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
-                <p class="text-center">Auteur : <?= $produit->getField('auteur') ?></p>
-                <p class="text-center">Catégorie : <?= $produit->getField('categorie') ?></p>
-                <p class="text-center">Date de parution : <?= $produit->getField('date_parution') ?></p>
+                <p class="text-center"> <span data-i18n="produit.adminProduit.prix">Prix</span> : <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
+                <p class="text-center"><span data-i18n="produit.adminProduit.auteur">Auteur</span> : <?= $produit->getField('auteur') ?></p>
+                <p class="text-center"><span data-i18n="produit.adminProduit.categorie">Catégorie</span> : <?= $produit->getField('categorie') ?></p>
+                <p class="text-center"><span data-i18n="produit.adminProduit.dateParution">Date de parution</span> : <?= $produit->getField('date_parution') ?></p>
                 <?php if($produit->getField('traducteur')!=''): ?>
-                <p class="text-center">Traducteur : <?= $produit->getField('traducteur') ?></p>
-                <p class="text-center"> Année de traduction : <?= $produit->getField('date_traduction') ?> </p>
+                <p class="text-center"><span data-i18n="produit.adminProduit.traducteur">Traducteur</span> : <?= $produit->getField('traducteur') ?></p>
+                <p class="text-center"> <span data-i18n="produit.adminProduit.dateTraduction">Date de traduction</span> : <?= $produit->getField('date_traduction') ?> </p>
                 <?php endif; ?>
-                <p class="text-center">Synopsis : <?= $produit->getField('description') ?></p>
-                <p class="text-center">Traducteur : <?= $produit->getField('traducteur') ?></p>
-                <p class="text-center"> Editeur : <?= $produit->getField('editeur') ?> </p>
-                <p class="text-center">Collection : <?= $produit->getField('collection') ?> </p>
+                <p class="text-center"><span data-i18n="produit.adminProduit.description">Description</span> : <?= $produit->getField('description') ?></p>
+                <p class="text-center"> <span data-i18n="produit.adminProduit.editeur">Editeur</span> : <?= $produit->getField('editeur') ?> </p>
+                <p class="text-center"><span data-i18n="produit.adminProduit.collection">Collection</span> : <?= $produit->getField('collection') ?> </p>
                 <hr>
                 <?php if ( $produit->getField('stock') > 0 ) :?>
-                <em>Nombre de produit(s) disponible(s) : <?= $produit->getField('stock') ?></em>
+                <em><span data-i18n="produit.adminProduit.stock">Stock</span> : <?= $produit->getField('stock') ?></em>
                 <hr>
                 <form method="post" action="">
                     <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>">
@@ -39,10 +38,10 @@
                         <option><?= $i ?></option>
                         <?php endfor; ?>
                     </select><br>
-                    <input type="submit" class="btn btn-success col-12" name="ajout_panier" value="Ajout au panier">
+                    <input type="submit" class="btn btn-success col-12" name="ajout_panier"  data-i18n="[value]produit.ficheProduit.ajout" value="Ajout au panier">
                 </form>
                 <?php else : ?>
-                <div class="alert alert-danger text-center">
+                <div class="alert alert-danger text-center"  data-i18n="produit.ficheProduit.rupture">
                     Produit victime de son succès (indisponible)
                 </div>
                 <?php endif; ?>
@@ -54,8 +53,9 @@
 
 
     <?php  if($autresProduits) : ?>
-    <h2 class="text-center w-100 m-5">Ces articles de la catégorie <?=  $produit->getField('categorie') ?> pourraient
-        vous plaire</h2>
+    <h2 class="text-center w-100 m-5"> <span data-i18n="produit.ficheProduit.associes1">Ces articles de la catégorie</span> 
+        <span data-i18n="produit.boutique.categories.<?=  $produit->getField('categorie') ?>"><?=$produit->getField('categorie')?></span> 
+        <span data-i18n="produit.ficheProduit.associes2">pourraient vous plaire.</span> </h2>
     <div class="more d-flex w-100">
         <?php
     foreach ($autresProduits as $autreProduit): ?>

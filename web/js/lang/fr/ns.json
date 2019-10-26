@@ -8,6 +8,15 @@
             "promotions": "Gestion des promotions"
 
         },
+        "modal": {
+            "connect":{
+              "1":"Veuillez vous",  
+              "2":"connecter",
+              "3":"ou vous",
+              "4":"inscrire",
+              "5":"pour valider votre panier."
+            }
+        },
         "boutique": "Boutique",
         "inscription": "Inscription",
         "connexion": "Connexion",
@@ -54,7 +63,26 @@
             "meilleursventes" : "Nos meilleures ventes",
             "details" : "Voir les détails"
         },
-        "ficheProduit":{}
+        "ficheProduit":{
+            "associes1":"Ces articles de la catégorie",
+            "associes2": "pourraient vous plaire.",
+            "ajout":"Ajout au panier",
+            "rupture":"Produit victime de son succès (indisponible)"
+        },
+        "panier":{
+            "quantite":"Quantité",
+            "prixUnite":"Prix unitaire",
+            "prixTotal":"Prix total",
+            "valider":"Validez votre panier",
+            "vider":"Videz votre panier",
+            "mentionPrix":{
+                "1":"Prix total pour",
+                "2":"articles."
+            },
+            "montantTVA":"Montant de la TVA",
+            "avecTVA":"Prix TVA incluse",
+            "codePromo":"Validez votre code promotionel"
+        }
 
     },
     "divers":{

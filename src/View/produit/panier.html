@@ -1,6 +1,6 @@
-<h2> Voici votre panier </h2>
+<h2 data-i18n="produit.panier.titre">Voici votre panier</h2>
 <?php if (empty($_SESSION['panier'])) : ?>
-    <div class="alert alert-info">Votre panier est vide :( </div>
+    <div class="alert alert-info" data-i18n="produit.panier.vide">Votre panier est vide :( </div>
 <?php else: ?>
 <?php if (isset($erreur)) : ?>
 <div class="alert alert-warning">
@@ -13,11 +13,11 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Référence</th>
-                    <th>Description</th>
-                    <th>Quantité</th>
-                    <th>Prix Unitaire</th>
-                    <th>Prix Total</th>
+                    <th data-i18n="produit.adminProduit.reference">Référence</th>
+                    <th data-i18n="produit.adminProduit.description">Description</th>
+                    <th data-i18n="produit.panier.quantite">Quantité</th>
+                    <th data-i18n="produit.panier.prixUnite">Prix Unitaire</th>
+                    <th data-i18n="produit.panier.prixTotal">Prix Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,19 +40,22 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="4" class="text-right">Montant total pour <?= $nb ?> article(s)</td>
+                    <td colspan="4" class="text-right">
+                         <span data-i18n="produit.panier.mentionPrix1">Montant total pour</span>  
+                         <?= $nb ?> 
+                         <span data-i18n="produit.panier.mentionPrix2">article(s)</span></td>
                     <td>
                         <?= $somme_totale ?> € HT
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" class="text-right">Montant de la TVA</td>
+                    <td colspan="4" class="text-right" data-i18n="produit.panier.montantTVA">Montant de la TVA</td>
                     <td>
                             <?= $TVA*$somme_totale ?> € 
                         </td>
                 </tr>
                 <tr>
-                        <td colspan="4" class="text-right">Prix TVA comprise</td>
+                        <td colspan="4" class="text-right"  data-i18n="produit.panier.avecTVA">Prix TVA comprise</td>
                         <td>
                                 <?= (1+$TVA)*$somme_totale ?> € TTC
                             </td>
@@ -66,13 +69,17 @@
             <div class="col-12 text-center">
                 <form action="<?= $url ?>produit/verifPromo" method="post">
                     <input type="hidden" name="sommeTotale" value="<?= $somme_totale ?>">
-                    <label for="promo">Entrez votre code promotionel</label><input id="promo" name="promo" type="text">
-                    <input type="submit" class="btn btn-success" name="validerpanier" value="Valider le panier">
+                    <label for="promo"  data-i18n="produit.panier.codePromo">Entrez votre code promotionel</label><input id="promo" name="promo" type="text">
+                    <input type="submit" class="btn btn-success" name="validerpanier" data-i18n="[value]produit.panier.valider" value="Valider le panier">
                 </form>
             </div>
         <?php else : ?>
             <div class="col-12 text-center">
-                <p>Veuillez vous <a href="<?= $url ?>membre/connexion">connecter</a> ou vous <a href="<?= $url ?>membre/inscription">inscrire</a> pour valider votre panier</p>
+                <p><span data-i18n="layout.modal.connect1">Veuillez vous</span> 
+                    <a href="<?= $url ?>membre/connexion"><span data-i18n="layout.modal.connect2"></span>connecter</span></a> 
+                    <span data-i18n="layout.modal.connect3"></span>ou vous</span> 
+                    <a href="<?= $url ?>membre/inscription"><span data-i18n="layout.modal.connect4"></span>inscrire</a> 
+                    <span data-i18n="layout.modal.connect5"></span>pour valider votre panier.</span></p>
             </div>
         <?php endif; ?>
     </div>
@@ -80,7 +87,7 @@
     <div class="row">
             <div class="col-12 text-center">
                     <form action="" method="post">
-                        <input type="submit" class="btn btn-danger" name="viderpanier" value="Vider le panier">
+                        <input type="submit" class="btn btn-danger" name="viderpanier"  data-i18n="[value]produit.panier.vider" value="Vider le panier">
                     </form>
             </div>
     </div>
