@@ -85,6 +85,32 @@
         }
 
     },
+    "commande":{
+        "adminCommande":{
+            "titre":"Administration des commandes",
+            "soustitre":{
+                "1":"Commande",
+                "2":"de",
+                "3":"En date du"
+            },
+            "civilite":{
+                "m":"M",
+                "mme":"Mme"
+            },
+            "reference":"Ref",
+            "coutUnite":"€/pièce",
+            "adresse":"Adresse",
+            "statut":{
+                "titre:":"Statut actuel",
+                "bouton1:":"Statut 'Envoyé'",
+                "bouton2:":"Statut 'Livré'"
+            },
+            "erreur":"Il n'y a pas encore de commandes à traiter"
+        },
+        "commande":{},
+        "detailscommande":{},
+        "meilleursventes":{}
+    },
     "divers":{
 "quisommesnous":{
 "h1":"Une solide expérience",

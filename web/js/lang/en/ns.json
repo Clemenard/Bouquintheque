@@ -86,6 +86,32 @@
 "recherche":{}
     
         },
+        "commande":{
+            "adminCommande":{
+                "titre":"Dashboard for orders",
+                "soustitre":{
+                    "1":"Order",
+                    "2":"from",
+                    "3":"Dated from"
+                },
+                "civilite":{
+                    "m":"Mr",
+                    "mme":"Ms"
+                },
+                "reference":"Ref",
+                "coutUnite":"€/piece",
+                "adresse":"Adress",
+                "statut":{
+                    "titre:":"Actual state",
+                    "bouton1:":"State 'Send'",
+                    "bouton2:":"State 'Shipped'"
+                },
+                "erreur":"There is no order to manage"
+            },
+            "commande":{},
+            "detailscommande":{},
+            "meilleursventes":{}
+        },
         "divers":{
     "quisommesnous":{
     "h1":"A wide knowledge",
