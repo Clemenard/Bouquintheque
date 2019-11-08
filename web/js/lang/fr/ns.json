@@ -84,7 +84,7 @@
             "codePromo":"Validez votre code promotionel"
         }
 
-    },
+    }, 
     "commande":{
         "adminCommande":{
             "titre":"Administration des commandes",
@@ -107,9 +107,30 @@
             },
             "erreur":"Il n'y a pas encore de commandes à traiter"
         },
-        "commande":{},
-        "detailscommande":{},
-        "meilleursventes":{}
+        "commande":{
+            "titre":"Mes commandes",
+            "erreur":"Vous n'avez pas encore de commandes",
+            "numCommande":"N° Commande",
+            "dateCommande":"Date de commande",
+            "montant":"Montant",
+            "etat":"Etat",
+            "promotion":"Promotion"
+        },
+        "detailscommande":{
+            "titre":"Détails de la commande",
+            "alert":{
+                "1":"Commande passée le",
+                "2":"Pour un montant total de",
+                "3":"Etat"
+            },
+            "coupon":"Coupon promotion",
+            "retour":"Revenir à l'historique des commandes"
+        },
+        "meilleursventes":{
+            "titre":"Meilleures ventes",
+            "rang":"Rang",
+            "nbVentes":"Nombre de ventes"
+        }
     },
     "divers":{
 "quisommesnous":{

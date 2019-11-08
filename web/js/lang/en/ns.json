@@ -108,9 +108,30 @@
                 },
                 "erreur":"There is no order to manage"
             },
-            "commande":{},
-            "detailscommande":{},
-            "meilleursventes":{}
+            "commande":{
+                "titre":"My orders",
+                "erreur":"You don't have any orders",
+                "numCommande":"Order ID",
+                "dateCommande":"Order date",
+                "montant":"Price",
+                "etat":"State",
+                "promotion":"Promotion"
+            },
+            "detailscommande":{
+                "titre":"Order's description",
+                "alert":{
+                    "1":"Order send the",
+                    "2":"For a total cost of",
+                    "3":"State"
+                },
+                "coupon":"Promotion ticket",
+                "retour":"Get back to order's history"
+            },
+            "meilleursventes":{
+                "titre":"Best sales",
+                "rang":"Rank",
+                "nbVentes":"Number of sales"
+            }
         },
         "divers":{
     "quisommesnous":{

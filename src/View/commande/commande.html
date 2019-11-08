@@ -1,17 +1,17 @@
-<h2><?= $title ?></h2>
+<h2 data-i18n="commande.commande.titre"><?= $title ?></h2>
 
 <?php if (empty($commandes)) : ?>
-    <div class="alert alert-info">Vous n'avez pas encore de commandes</div>
+    <div class="alert alert-info" data-i18n="commande.commande.erreur">Vous n'avez pas encore de commandes</div>
 <?php else : ?>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>N° Commande</th>
-                    <th>Date de commande</th>
-                    <th>Montant</th>
-                    <th>Etat</th>
-                    <th>Promotion</th>
+                    <th data-i18n="commande.commande.numCommande">N° Commande</th>
+                    <th data-i18n="commande.commande.dateCommande">Date de commande</th>
+                    <th data-i18n="commande.commande.montant">Montant</th>
+                    <th data-i18n="commande.commande.etat">Etat</th>
+                    <th data-i18n="commande.commande.promotion">Promotion</th>
                 </tr>
             </thead>
             <tbody>

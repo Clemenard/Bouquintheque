@@ -1,12 +1,12 @@
-<h2><?= $title ?> 
+<h2 data-i18n="commande.detailscommande.titre"><?= $title ?> 
     <?php
     if (isset($commande)) :
     ?>
     n° <?= $commande->getField('id_commande') ?></h2>
     <p class="alert alert-info">
-        Commande passée le : <?= date('d/m/Y à H:i:s',strtotime($commande->getField('date_enregistrement'))) ?><br>
-        Pour un montant total de : <?= $commande->getField('montant') ?> €<br>
-        Etat : <?= $commande->getField('etat') ?>
+        <span data-i18n="commande.detailscommande.alert.1">Commande passée le</span> : <?= date('d/m/Y à H:i:s',strtotime($commande->getField('date_enregistrement'))) ?><br>
+        <span data-i18n="commande.detailscommande.alert.2">Pour un montant total de</span> : <?= $commande->getField('montant') ?> €<br>
+        <span data-i18n="commande.detailscommande.alert.3">Etat</span> : <?= $commande->getField('etat') ?>
     </p>
 
 <!-- je m'attends à recevoir $details_commande -->
@@ -14,11 +14,11 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                    <th>Référence</th>
-                    <th>Description</th>
-                    <th>Quantité</th>
-                    <th>Prix Unitaire</th>
-                    <th>Prix Total</th>
+                    <th data-i18n="produit.adminProduit.reference">Référence</th>
+                    <th data-i18n="produit.adminProduit.description">Description</th>
+                    <th data-i18n="produit.panier.quantite">Quantité</th>
+                    <th data-i18n="produit.panier.prixUnite">Prix Unitaire</th>
+                    <th data-i18n="produit.panier.prixTotal">Prix Total</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,14 +42,17 @@
                 <?php endfor; ?> 
             </tbody>
             <tfoot>
+                    <tr>
+                            <td colspan="4" class="text-right">
+                                 <span data-i18n="produit.panier.mentionPrix1">Montant total pour</span>  
+                                 <?= $nb ?> 
+                                 <span data-i18n="produit.panier.mentionPrix2">article(s)</span></td>
+                            <td>
+                                <?= $somme_totale ?> € HT
+                            </td>
+                        </tr>
                 <tr>
-                    <td colspan="4" class="text-right">Montant total pour <?= $nb_articles ?> article(s)</td>
-                    <td>
-                        <?= $somme_totale ?> €
-                    </td>
-                </tr>
-                <tr>
-                        <td colspan="4" class="text-right">Montant de la TVA</td>
+                        <td colspan="4" class="text-right" data-i18n="produit.panier.montantTVA">Montant de la TVA</td>
                         <td>
                                 + <?= $TVA*$somme_totale ?> € 
                             </td>
@@ -58,14 +61,14 @@
                     if($commande->getField('promotion')!='Aucune--0'):
                     $promotion=explode('--',$commande->getField('promotion'))[1]; ?>
                     <tr>
-                            <td colspan="4" class="text-right">Coupon promotion</td>
+                            <td colspan="4" class="text-right" data-i18n="commande.detailscommande.coupon">Coupon promotion</td>
                             <td>
                                    - <?= $promotion ?> € 
                                 </td>
                         </tr>
                         <?php endif; ?>
                     <tr>
-                            <td colspan="4" class="text-right">Prix TVA comprise</td>
+                            <td colspan="4" class="text-right"  data-i18n="produit.panier.avecTVA">Prix TVA comprise</td>
                             <td>
                                     <?= (1+$TVA)*$somme_totale-$promotion ?> € TTC
                                 </td>
@@ -75,4 +78,4 @@
         </table>
     </div>
     <?php endif; ?>
-    <a href="<?= $url ?>commande/afficheCommande" class="btn btn-success">Revenir à l'historique des commandes</a>
+    <a href="<?= $url ?>commande/afficheCommande" class="btn btn-success" data-i18n="commande.detailscommande.retour">Revenir à l'historique des commandes</a>
