@@ -16,10 +16,10 @@
                 "5": "pour valider votre panier."
             }
         },
-        "boutons":{
-            "valider":"Valider",
-            "annuler":"Annuler",
-            "supprimer":"Supprimer"
+        "boutons": {
+            "valider": "Valider",
+            "annuler": "Annuler",
+            "supprimer": "Supprimer"
         },
         "boutique": "Boutique",
         "inscription": "Inscription",
@@ -51,24 +51,24 @@
             }
         },
         "connexion": {
-            "motDePasse":"Mot de passe"
+            "motDePasse": "Mot de passe"
         },
         "inscription": {
-            "coordonnees":"Coordonnées",
-            "informations":"Informations"
+            "coordonnees": "Coordonnées",
+            "informations": "Informations"
         },
         "profil": {
-            "nouveauMdp":"Nouveau mot de passe"
+            "nouveauMdp": "Nouveau mot de passe"
         }
     },
     "note": {
-        "notes":{
-            "avis":"Votre avis",
-            "titre":"Titre",
-            "contenu":"Contenu",
-            "commenter":"Donnez votre avis",
-            "note":"Note",
-            "warning":"Vous devez vous connecter pour laisser un avis"
+        "notes": {
+            "avis": "Votre avis",
+            "titre": "Titre",
+            "contenu": "Contenu",
+            "commenter": "Donnez votre avis",
+            "note": "Note",
+            "warning": "Vous devez vous connecter pour laisser un avis"
         }
     },
     "produit": {
@@ -111,6 +111,7 @@
             "rupture": "Produit victime de son succès (indisponible)"
         },
         "panier": {
+            "vide": "Votre panier est vide :-(",
             "quantite": "Quantité",
             "prixUnite": "Prix unitaire",
             "prixTotal": "Prix total",
@@ -131,7 +132,8 @@
             "soustitre": {
                 "1": "Commande",
                 "2": "de",
-                "3": "En date du"
+                "3": "En date du",
+                "4": "à"
             },
             "civilite": {
                 "m": "M",
@@ -141,9 +143,12 @@
             "coutUnite": "€/pièce",
             "adresse": "Adresse",
             "statut": {
-                "titre:": "Statut actuel",
-                "bouton1:": "Statut 'Envoyé'",
-                "bouton2:": "Statut 'Livré'"
+                "1": "En cours de traitement",
+                "2": "En cours de livraison",
+                "3": "Livré",
+                "titre": "Statut actuel",
+                "bouton1": "Statut 'Envoyé'",
+                "bouton2": "Statut 'Livré'"
             },
             "erreur": "Il n'y a pas encore de commandes à traiter"
         },

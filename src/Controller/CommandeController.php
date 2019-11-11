@@ -15,7 +15,6 @@ class CommandeController extends Controller{
       $params['title'] = 'Admin Commandes';
       $params['commandes'] = $this->getModel()->getallDetailsCommandes();
       foreach($params['commandes'] as $ligne){
-        echo $ligne['id_commande'].'<br />';
       $params['details_commandes'][$ligne['id_commande']]  =  $this->getModel()->getDetailsMyCommandes($ligne['id_commande']);
       }
 
@@ -29,11 +28,7 @@ class CommandeController extends Controller{
   public function changeStatut($idPlusStatut){
     if( isset($_SESSION['membre']) && $_SESSION['membre']->isAdmin() ){
       $tab= explode("-", $idPlusStatut);
-      switch($tab[1]){
-        case 2 : $statut='Envoyé';break;
-        case 3 : $statut='Livré';break;
-        default : $statut='en cours de traitement';break;
-      }
+      $statut=$tab[1];
       $this->getModel()->update($tab[0],array('etat'=>$statut));
       $this->redirect($this->url . 'commande/adminCommande');
     }

@@ -1,4 +1,4 @@
-<h2 data-i18n="produit.panier.titre">Voici votre panier</h2>
+<h2 data-i18n="layout.panier">Voici votre panier</h2>
 <?php if (empty($_SESSION['panier'])) : ?>
     <div class="alert alert-info" data-i18n="produit.panier.vide">Votre panier est vide :( </div>
 <?php else: ?>
@@ -41,9 +41,9 @@
             <tfoot>
                 <tr>
                     <td colspan="4" class="text-right">
-                         <span data-i18n="produit.panier.mentionPrix1">Montant total pour</span>  
+                         <span data-i18n="produit.panier.mentionPrix.1">Montant total pour</span>  
                          <?= $nb ?> 
-                         <span data-i18n="produit.panier.mentionPrix2">article(s)</span></td>
+                         <span data-i18n="produit.panier.mentionPrix.2">article(s)</span></td>
                     <td>
                         <?= $somme_totale ?> € HT
                     </td>
@@ -75,11 +75,11 @@
             </div>
         <?php else : ?>
             <div class="col-12 text-center">
-                <p><span data-i18n="layout.modal.connect1">Veuillez vous</span> 
-                    <a href="<?= $url ?>membre/connexion"><span data-i18n="layout.modal.connect2"></span>connecter</span></a> 
-                    <span data-i18n="layout.modal.connect3"></span>ou vous</span> 
-                    <a href="<?= $url ?>membre/inscription"><span data-i18n="layout.modal.connect4"></span>inscrire</a> 
-                    <span data-i18n="layout.modal.connect5"></span>pour valider votre panier.</span></p>
+                <p><span data-i18n="layout.modal.connect.1">Veuillez vous</span> 
+                    <a href="<?= $url ?>membre/connexion"><span data-i18n="layout.modal.connect.2">connecter</span></a> 
+                    <span data-i18n="layout.modal.connect.3"></span>  
+                    <a href="<?= $url ?>membre/inscription"><span data-i18n="layout.modal.connect.4"> inscrire</span></a> 
+                    <span data-i18n="layout.modal.connect.5"></span></p>
             </div>
         <?php endif; ?>
     </div>

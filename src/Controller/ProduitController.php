@@ -89,8 +89,9 @@ public $TVA=0.2;
 
     if(!empty($_POST['viderpanier'])){
       $this->viderPanier();
+      if(isset($_SESSION['membre'])){
       mail ( $_SESSION['membre']->getField('email') , 'Oh, pourquoi renoncer?' , "Nos produits sont géniaux, pourquoi avoir décommandé? Nous espérons recevoir prochainement de vos nouvelles, n'hésitez pas à nous faire part de vos motifs de mécontentement." );
-    }
+    }}
 
     if(!empty($_SESSION['panier'])){
       $params['content_panier'] = array();
