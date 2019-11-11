@@ -17,6 +17,11 @@
               "5":"to check out your cart."
             }
         },
+        "boutons":{
+            "valider":"Validate",
+            "annuler":"Cancel",
+            "supprimer":"Delete"
+        },
         "boutique": "Shop",
         "inscription": "Sign In",
         "connexion": "Log In",
@@ -29,6 +34,42 @@
             "1":" 2019 Bouquinthèque - Clément Menard - powered by FredoFramework",
             "2":"This website is for pedagogical purpose only, you can't buy from it",
             "quisommesnous":"About us"}
+        },
+        "membre": {
+            "adminMembre": {
+                "pseudo": "Pseudo",
+                "identite": "Identity",
+                "nom": "Name",
+                "prenom": "Surname",
+                "adresse": "Adress",
+                "codePostal": "Postal Code",
+                "ville": "Town",
+                "role": {
+                    "titre": "Job",
+                    "0": "Member",
+                    "1": "Admin"
+                }
+            },
+            "connexion": {
+                "motDePasse":"Password"
+            },
+            "inscription": {
+                "coordonnees":"Contact information",
+                "informations":"Login information"
+            },
+            "profil": {
+                "nouveauMdp":"New password"
+            }
+        },
+        "note": {
+            "notes":{
+                "avis":"Your opinion",
+                "titre":"Title",
+                "contenu":"Content",
+                "commenter":"Share your opinion",
+                "note":"Note",
+                "warning":"You need to log in before sharing your opinion"
+            }
         },
         "produit":{
             "adminProduit":{

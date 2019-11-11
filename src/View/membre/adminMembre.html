@@ -1,4 +1,4 @@
-<h2><?= $title ?></h2>
+<h2  data-i18n="layout.admin.membres"><?= $title ?></h2>
 <?php
 
 if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
@@ -7,19 +7,19 @@ if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
-                  <th><a href="<?= $url ?>membre/adminMembre/id_membre">ID</a></th>
-                  <th><a href="<?= $url ?>membre/adminMembre/pseudo">Pseudo</a></th>
-                  <th><a href="<?= $url ?>membre/adminMembre/nom">Identité</a></th>
-                  <th><a href="<?= $url ?>membre/adminMembre/mail">Email</a></th>
+                  <th><a href="<?= $url ?>membre/adminMembre/id_membre" data-i18n="produit.adminProduit.id">ID</a></th>
+                  <th><a href="<?= $url ?>membre/adminMembre/pseudo" data-i18n="membre.adminMembre.pseudo">Pseudo</a></th>
+                  <th><a href="<?= $url ?>membre/adminMembre/identite" data-i18n="membre.adminMembre.nom">Identité</a></th>
+                  <th><a href="<?= $url ?>membre/adminMembre/mail" data-i18n="membre.adminMembre.mail">Email</a></th>
                     <th>Adresse</th>
-                    <th><a href="<?= $url ?>membre/adminMembre/statut">Role</a></th>
+                    <th><a href="<?= $url ?>membre/adminMembre/statut" data-i18n="membre.adminMembre.role.titre">Role</a></th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($membres as $membre) :
-                    if($membre->getField('civilite') == 'm') $civilite = "M";
-                    else $civilite = 'Mme';
+                    if($membre->getField('civilite') == 'm') $civilite = "<span data-i18n="commande.adminCommande.civilite.m">M</span>";
+                    else $civilite = '<span data-i18n="commande.adminCommande.civilite.mme">Mme'</span>';
                         ?>
                     <tr>
                         <td><?= $membre->getField('id_membre') ?></td>
@@ -27,7 +27,7 @@ if ($_SESSION['membre'] && $_SESSION['membre']->isAdmin()):
                         <td><?= $civilite.' '.$membre->getField('nom').' '.$membre->getField('prenom') ?></td>
                         <td><a href="mailto:<?= $membre->getField('email') ?>"><?= $membre->getField('email') ?></a></td>
                         <td><?= $membre->getField('adresse').' '.$membre->getField('code_postal').' '.$membre->getField('ville') ?></td>
-                        <td><?= ($membre->getField('statut') == 1 ) ? 'Admin' : 'Membre' ?></td>
+                        <td  data-i18n="membre.adminMembre.role.<?= $membre->getField('statut') == 1 ) ?>"> 'Admin' : 'Membre' ?></td>
 
                         <td>
                             <?php if ( $membre->getField('id_membre') != $_SESSION['membre']->getField('id_membre')) : ?>

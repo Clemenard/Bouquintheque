@@ -5,69 +5,69 @@
 <form action="" method="post">
 
    <fieldset>
-        <legend>Identification</legend>
+        <legend data-i18n="membre.inscription.identification">Identification</legend>
         <div class="form-group">
-            <label for="pseudo">Pseudo</label>
+            <label for="pseudo" data-i18n="membre.adminMembre.pseudo">Pseudo</label>
             <input type="text" name="pseudo" id="pseudo" value="<?= $_POST['pseudo'] ?? '' ?>" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="mdp">Mot de passe</label>
+            <label for="mdp" data-i18n="membre.connexion.motDePasse">Mot de passe</label>
             <input type="password" name="mdp" id="mdp" value="" class="form-control">
         </div>
 
         <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" data-i18n="membre.adminMembre.email">Email</label>
             <input type="email" name="email" id="email" value="<?= $_POST['email'] ?? '' ?>" class="form-control">
         </div>
 
     </fieldset>
 
     <fieldset>
-        <legend>Informations</legend>
+        <legend data-i18n="membre.inscription.coordonnes">Coordonnées</legend>
 
 
         <div class="form-check form-check-inline">
             <input type="radio" name="civilite" value="m" class="form-check-input"
             <?= (!isset($_POST['civilite']) || ($_POST['civilite'] && $_POST['civilite'] =='m')) ? 'checked' : '' ?> id="inlineRadio1">
-            <label class="form-check-label" for="inlineRadio1">Monsieur</label>
+            <label class="form-check-label" for="inlineRadio1" data-i18n="commande.adminCommande.civilite.m">Monsieur</label>
         </div>
         <div class="form-check form-check-inline">
             <input type="radio" name="civilite" value="f" class="form-check-input" <?= (isset($_POST['civilite']) && $_POST['civilite'] =='f') ? 'checked' : '' ?>
              id="inlineRadio2">
-            <label class="form-check-label" for="inlineRadio2">Madame</label>
+            <label class="form-check-label" for="inlineRadio2" data-i18n="commande.adminCommande.civilite.mme">Madame</label>
         </div>
 
         <div class="form-row">
 
             <div class="form-group col-6">
-            <label for="nom">Nom</label>
+            <label for="nom" data-i18n="membre.adminMembre.nom">Nom</label>
             <input type="text" name="nom" id="nom" value="<?= $_POST['nom'] ?? '' ?>" class="form-control">
             </div>
 
             <div class="form-group col-6">
-            <label for="prenom">Prénom</label>
+            <label for="prenom" data-i18n="membre.adminMembre.prenom">Prénom</label>
             <input type="text" name="prenom" id="prenom" value="<?= $_POST['prenom'] ?? '' ?>" class="form-control">
             </div>
         </div>
 
         <div class="form-group">
-            <label for="adresse">Adresse</label>
+            <label for="adresse" data-i18n="membre.adminMembre.adresse">Adresse</label>
             <input type="text" name="adresse" id="adresse" value="<?= $_POST['adresse'] ?? '' ?>" class="form-control">
         </div>
 
         <div class="form-row">
             <div class="form-group col-3">
-                <label for="code_postal">Code postal</label>
+                <label for="code_postal" data-i18n="membre.adminMembre.codePostal">Code postal</label>
                 <input type="number" name="code_postal" id="code_postal" value="<?= $_POST['code_postal'] ?? '' ?>" class="form-control">
             </div>
 
             <div class="form-group col-9">
-                <label for="ville">Ville</label>
+                <label for="ville" data-i18n="membre.adminMembre.ville">Ville</label>
                 <input type="text" name="ville" id="ville" value="<?= $_POST['ville'] ?? '' ?>" class="form-control">
             </div>
         </div>
 
     </fieldset>
-	<input type="submit"  class="btn btn-success" value="S'inscrire">
+	<input type="submit"  class="btn btn-success" value="S'inscrire" data-i18n="layout.inscription">
 </form>

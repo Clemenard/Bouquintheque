@@ -1,57 +1,51 @@
-<h2><?= $title ?></h2>
+<h2 data-i18n="layout.profil"><?= $title ?></h2>
 <?php if (!empty($erreur) ) : ?>
     <div class="alert alert-danger"><?= $erreur ?></div>
 <?php endif; ?>
 <div class="row">
     <!-- zone à gauche -->
     <div class="col-sm-6 border">
-        <h3>Coordonnées</h3>
+        <h3 data-i18n="membre.inscription.coordonnes">Coordonnées</h3>
     <?php
-    /* 4 je tiens compte de mon indicateur action pour afficher le formulaire d'édition */
-
     if ( isset($action) && $action == 'coord') :
     ?>
     <form action="" method="post">
         <div class="form-row">
             <div class="form-group col-6">
-            <label for="nom">Nom</label>
+            <label for="nom" data-i18n="membre.adminMembre.nom">Nom</label>
             <input class="form-control" type="text"  name="nom" id="nom" value="<?= $_SESSION['membre']->getField('nom') ?>">
             </div>
             <div class="form-group col-6">
-            <label for="prenom">Prénom</label>
+            <label for="prenom" data-i18n="membre.adminMembre.prenom">Prénom</label>
             <input class="form-control" type="text"  name="prenom" id="prenom" value="<?= $_SESSION['membre']->getField('prenom') ?>">
             </div>
         </div>
         <div class="form-group">
-                <label for="adresse">Adresse</label>
+                <label for="adresse" data-i18n="membre.adminMembre.adresse">Adresse</label>
                 <input class="form-control" type="text"  name="adresse" id="adresse" value="<?= $_SESSION['membre']->getField('adresse') ?>">
         </div>
         <div class="form-row">
                 <div class="form-group col-3">
-                <label for="code_postal">CP</label>
+                <label for="code_postal" data-i18n="membre.adminMembre.codePostal">CP</label>
                 <input class="form-control" type="number"  name="code_postal" id="code_postal" value="<?= $_SESSION['membre']->getField('code_postal') ?>">
                 </div>
                 <div class="form-group col-9">
-                <label for="ville">Ville</label>
+                <label for="ville" data-i18n="membre.adminMembre.ville">Ville</label>
                 <input class="form-control" type="text"  name="ville" id="ville" value="<?= $_SESSION['membre']->getField('ville') ?>">
                 </div>
         </div>
         <br>
-        <input type="submit" class="btn btn-success" name="validmodif" value="Valider">
-        <a href="<?= $url ?>membre/profil" class="btn btn-warning">Annuler</a>
+        <input type="submit" class="btn btn-success" name="validmodif" value="Valider" data-i18n="layout.bouton.valider">
+        <a href="<?= $url ?>membre/profil" class="btn btn-warning" data-i18n="layout.bouton.annuler">Annuler</a>
     </form>
 
     <?php
 
-    /* sinon je suis en consultation simple de mon profil */
     else : ?>
     <p>
-        Nom, Prénom : <?= $_SESSION['membre']->getField('nom').' '.$_SESSION['membre']->getField('prenom') ?>
+       <span data-i18n="membre.adminMembre.nom">Nom</span>, <span data-i18n="membre.adminMembre.prenom">Prénom</span> : <?= $_SESSION['membre']->getField('nom').' '.$_SESSION['membre']->getField('prenom') ?>
     </p>
-    <p>
-      Expérience : <?= $_SESSION['membre']->getField('experience') ?> xp.
-    </p>
-    Adresse:
+    <span data-i18n="membre.adminMembre.adresse">Adresse</span>:
     <p>
         <adress>
             <?= $_SESSION['membre']->getField('adresse') ?><br>
@@ -61,13 +55,13 @@
     <!-- 1 / ajout d'un lien permettant l'édition
             => methode modifProfil à prévoir coté controller avec un param (ici coord)
     -->
-    <a href="<?= $url ?>membre/modifProfil/coord" class="btn btn-success">Modifier mes coordonnées</a>
+    <a href="<?= $url ?>membre/modifProfil/coord" class="btn btn-success" data-i18n="membre.profil.modif">Modifier mes coordonnées</a>
 
     <?php endif; ?>
     </div>
     <!-- zone à droite -->
     <div class="col-sm-6 border">
-        <h3>Identification</h3>
+        <h3 data-i18n="membre.inscription.identification">Identification</h3>
         <p>
              Pseudo : <?= $_SESSION['membre']->getField('pseudo'); ?>
              <br>
@@ -78,15 +72,15 @@
         if (isset($action) && $action=='mdp'):
         ?>
         <form action="" method="post">
-            <label for="mdp">Nouveau mot de passe</label>
+            <label for="mdp" data-i18n="membre.profil.nouveauMdp">Nouveau mot de passe</label>
             <input type="password" name="mdp" id="mdp"><br>
-            <input type="submit" name="validmdp" value="Valider le mot de passe" class="btn btn-success">
-            <a href="<?= $url ?>membre/profil" class="btn btn-warning">Annuler</a>
+            <input type="submit" name="validmdp"  data-i18n="[value]layout.bouton.annuler" value="Valider le mot de passe" class="btn btn-success">
+            <a href="<?= $url ?>membre/profil" class="btn btn-warning" data-i18n="layout.bouton.annuler">Annuler</a>
         </form>
         <?php
         else :
         ?>
-        <a href="<?= $url ?>membre/modifProfil/mdp" class="btn btn-success">Modifier mon mot de passe</a>
+        <a href="<?= $url ?>membre/modifProfil/mdp" class="btn btn-success" data-i18n="membre.profil.nouveauMdp">Modifier mon mot de passe</a>
         <?php endif; ?>
     </div>
 </div>

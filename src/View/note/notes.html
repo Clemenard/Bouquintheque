@@ -2,7 +2,7 @@
                 <div class="card-title text-center">
                     <h2><?= $produit->getField('titre') ?></h2>
                     <img src="<?= $url ?>photo/<?= $produit->getField('photo') ?>" alt="" class="w-200 ">
-                    <h3>Avis clients</h3>
+                    <h3 data-i18n="note.notes.avis">Avis clients</h3>
                 </div>
                 <?php foreach ($notes as $note): ?>
                 <div class="card border">
@@ -12,13 +12,13 @@
                     <p class="text-center">le  <?= $note->getField('date') ?></p>
                     <p class="text-center">Note :  <?= $note->getField('note') ?> /10</p>
                   </div>
-                 <h2>Titre : <?= $note->getField('titre') ?></h2>
-                <p> Contenu : <?= $note->getField('description') ?></p>
+                 <h2><span data-i18n="note.notes.titre">Titre</span> : <?= $note->getField('titre') ?></h2>
+                <p> <span data-i18n="note.notes.contenu">Contenu</span> : <?= $note->getField('description') ?></p>
               </div> 
                 </div>
 <?php endforeach; ?>
                 <div>
-                  <h3>Donnez votre avis</h3>
+                  <h3 data-i18n="note.notes.commenter">Donnez votre avis</h3>
                   <?php if(isset($_SESSION['membre'])) : ?>
                   <form method="post" action="" enctype="multipart/form-data">
 
@@ -27,23 +27,23 @@
                           <div class="row">
                               <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>" class="form-control">
                               <input type="hidden" name="id_membre" value="<?= $_SESSION['membre']->getField('id_membre') ?>" class="form-control">
-                                  <label for="note">Note</label>
+                                  <label for="note" data-i18n="note.notes.note">Note</label>
                                   <input type="number" name="note" id="note" value="<?= $note_actuelle['note'] ?? '' ?>" class="form-control">
-                                  <label for="titre">Titre</label>
+                                  <label for="titre" data-i18n="note.notes.titre">Titre</label>
                                   <input type="text" name="titre" id="titre" value="<?= $note_actuelle['titre'] ?? '' ?>" class="form-control">
-                                  <label for="description">Avis</label>
+                                  <label for="description" data-i18n="note.notes.avis">Avis</label>
                                   <textarea name="description" id="description" class="form-control" rows="7"><?= $note_actuelle['description'] ?? '' ?></textarea>
                           </div>
                           <div class="row">
                               <div class="col-12 text-center">
-                                  <input type="submit" class="btn btn-success" value="Laissez un avis">
+                                  <input type="submit" class="btn btn-success"  data-i18n="[value]layout.bouton.valider" value="Laissez un avis">
                               </div>
                           </div>
                   </form>
                   <?php else: ?>
-                    <p>Vous devez vous connecter pour laisser un avis</p>
+                    <p data-i18n="note.notes.warning">Vous devez vous connecter pour laisser un avis</p>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?= $url ?>membre/connexion">Connexion</a>
+                      <a class="nav-link" href="<?= $url ?>membre/connexion" data-i18n="layout.connexion">Connexion</a>
                     </li>
                     <?php endif; ?>
                 </div>
