@@ -16,9 +16,13 @@ class NoteController extends Controller{
       if($champsvides>0){
         $erreur[] = 'Merci de remplir '.$champsvides.' champ(s) manquant(s)';
       }
+      if($_POST['note']<0 || $_POST['note']>10){
+        $erreur[] = 'Veuillez rentrer une note comprise entre 0 et 10';
+      }
 
       if(empty($erreur)){
         $this->getModel()->insertNote($_POST);
+        unset($_POST);
       }
 
     }

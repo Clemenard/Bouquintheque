@@ -16,9 +16,16 @@ use PDO;
       return $donnees;
     }
     }
+    public function selectProduit($id){
 
-  public function selectProduit($id){
-      return $this->select($id);
+      $q=$this->execRequest('SELECT * FROM '.$this->getTable(true).' WHERE is_deleted=0 and id_'.$this->getTable().' = :id',array('id'=>$id));
+        $q->setFetchMode(PDO::FETCH_CLASS,'Entity\\'.ucfirst($this->getTable()));
+      $data=$q->fetch();
+      if(!$data){
+        return false;
+      }
+      else{
+      return $data;}
     }
 
   public function deleteProduit($id){

@@ -1,13 +1,31 @@
 <?php
 
 namespace Controller;
-use ProduitModel;
+use ProduitModel, PDFModel;
 
 class CommandeController extends Controller{
 
   public $id_commande;
   public $TVA=0.2;
 
+  public function convertirPdf($id){
+    if(!empty($id)){
+      $params['details_commande'] = $this->getModel()->getDetailsMyCommandes($id);
+        $params['title'] = 'Détail de ma commande';
+        $params['commande'] = $this->getModel()->getMyCommande($id);
+        $params['TVA'] = $this->TVA;
+        $pdf = $this->getModel('Model\PDFModel');
+      $pdf->SetFont('Times','',12);
+      $header = array('Ref.', 'Desc.', 'Quantité', 'Prix unitaire','Prix total');
+      // Chargement des données
+      $data = $params['details_commande'];
+      $pdf->AddPage();
+      $pdf->BasicTable($header,$data,$params['commande']);
+      $pdf->Output();
+      
+        return $this->render('layout.html','detailscommande.html',$params);
+  }
+}
   public function adminCommande(){
 
     // tester si je suis admin
@@ -57,6 +75,7 @@ if(!empty($id)){
       $params['meilleurs_ventes'][$i]['produit']=$produitbis;
       $i++;
     }
+    
       return $this->render('layout.html','meilleursventes.html',$params);
   }
 

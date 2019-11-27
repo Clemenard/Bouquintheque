@@ -1,4 +1,7 @@
 <h2 data-i18n="commande.meilleursventes.titre"><?= $title ?></h2>
+<?php if (!$meilleurs_ventes) : ?>
+    <div class="alert alert-info" >Zéro ventes! </div>
+<?php else: ?>
     <div class="table-responsive">
         <table class="table table-bordered table-striped">
             <thead>
@@ -13,7 +16,8 @@
             <tbody>
                 <?php $i=0;
                 foreach($meilleurs_ventes as $vente) :
-                $value = '  <a href="'. $url .'produit/affiche/'. $vente['produit']->getField('id_produit').'"><img src="'. $url .'photo/'. ($vente['produit']->getField('photo')) .'" class="thumbnail img-fluid"></a>';
+                if ($vente['produit'] && $i<=9):
+                $value = '  <a href="'. $url .'produit/affiche/'. $vente['produit']->getField('id_produit').'"><img alt="photo" src="'. $url .'photo/products/'.($vente['produit']->getField('photo')).'" class="thumbnail img-fluid"></a>';
                   $i++;
                         ?>
                     <tr>
@@ -23,7 +27,10 @@
                         <td class='desc-produit'><?= $vente['produit']->getField('auteur') ?></td>
                         <td class='desc-produit'><?= $vente['nb_ventes'] ?></td>
                     </tr>
-                <?php endforeach; ?>
+                <?php 
+                endif;
+                endforeach; ?>
             </tbody>
         </table>
     </div>
+    <?php endif; ?>

@@ -2,7 +2,7 @@
                 <div class="card-title text-center">
                     <h2><?= $produit->getField('titre') ?></h2>
                     <a href="<?= $url ?>produit/affiche/<?= $produit->getField('id_produit') ?>">
-                <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>" alt="" class="card-img img-fluid">
+                <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>" alt="" class="col-sm-6 col-12">
             </a>
                     <h3 data-i18n="note.notes.avis">Avis clients</h3>
                 </div>
@@ -30,7 +30,7 @@
                               <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>" class="form-control">
                               <input type="hidden" name="id_membre" value="<?= $_SESSION['membre']->getField('id_membre') ?>" class="form-control">
                                   <label for="note" data-i18n="note.notes.note">Note</label>
-                                  <input type="number" name="note" id="note" value="<?= $note_actuelle['note'] ?? '' ?>" class="form-control">
+                                  <input type="number" name="note" id="note" max=10 min=0 value="<?= $note_actuelle['note'] ?? '' ?>" class="form-control">
                                   <label for="titre" data-i18n="note.notes.titre">Titre</label>
                                   <input type="text" name="titre" id="titre" value="<?= $note_actuelle['titre'] ?? '' ?>" class="form-control">
                                   <label for="description" data-i18n="note.notes.avis">Avis</label>

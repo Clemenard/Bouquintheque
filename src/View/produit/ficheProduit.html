@@ -1,130 +1,154 @@
 <div class="row">
-        <div class="col-md-8 col-12">
-    <div class="col-md-10 col-12">
-        <?php if (!empty($message)): ?>
-        <div class="alert alert-success">
-            <?= $message ?><p><a href="<?= $url ?>produit/panier">Voir le Panier</a></p>
-        </div>
-        <?php endif; ?>
-        <div class="card border">
-            <div class="card-body">
-                <div class="card-title text-center">
-                    <h2><?= $produit->getField('titre') ?></h2>
-                </div>
-              <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>" alt="<?= $produit->getField('titre') ?>" class="card-img img-fluid" > 
-                <hr>
-                <p class="text-center"> <span data-i18n="produit.adminProduit.prix">Prix</span> : <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
-                <p class="text-center"><span data-i18n="produit.adminProduit.auteur">Auteur</span> : <?= $produit->getField('auteur') ?></p>
-                <p class="text-center"><span data-i18n="produit.adminProduit.categorie">Catégorie</span> : <?= $produit->getField('categorie') ?></p>
-                <p class="text-center"><span data-i18n="produit.adminProduit.dateParution">Date de parution</span> : <?= $produit->getField('date_parution') ?></p>
-                <?php if($produit->getField('traducteur')!=''): ?>
-                <p class="text-center"><span data-i18n="produit.adminProduit.traducteur">Traducteur</span> : <?= $produit->getField('traducteur') ?></p>
-                <p class="text-center"> <span data-i18n="produit.adminProduit.dateTraduction">Date de traduction</span> : <?= $produit->getField('date_traduction') ?> </p>
-                <?php endif; ?>
-                <p class="text-center"><span data-i18n="produit.adminProduit.description">Description</span> : <?= $produit->getField('description') ?></p>
-                <p class="text-center"> <span data-i18n="produit.adminProduit.editeur">Editeur</span> : <?= $produit->getField('editeur') ?> </p>
-                <p class="text-center"><span data-i18n="produit.adminProduit.collection">Collection</span> : <?= $produit->getField('collection') ?> </p>
-                <hr>
-                <?php if ( $produit->getField('stock') > 0 ) :?>
-                <em><span data-i18n="produit.adminProduit.stock">Stock</span> : <?= $produit->getField('stock') ?></em>
-                <hr>
-                <form method="post" action="">
-                    <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>">
+    <div class="col-md-8 col-12">
+        <div class="col-md-10 col-12">
+            <?php if (!empty($message)): ?>
+            <div class="alert alert-success">
+                <?= $message ?><p><a href="<?= $url ?>produit/panier">Voir le Panier</a></p>
+            </div>
+            <?php endif; ?>
+            <div class="card border">
+                <div class="card-body">
+                    <div class="card-title text-center">
+                        <h2><?= $produit->getField('titre') ?></h2>
+                    </div>
+                    <img src="<?= $url ?>photo/products/<?= $produit->getField('photo') ?>"
+                        alt="<?= $produit->getField('titre') ?>" class="card-img img-fluid">
+                    <hr>
+                    <p class="text-center"> <span data-i18n="produit.adminProduit.prix">Prix</span> :
+                        <?= number_format($produit->getField('prix')*(1+$TVA),2) ?> € TTC</p>
+                    <p class="text-center"><span data-i18n="produit.adminProduit.auteur">Auteur</span> :
+                        <?= $produit->getField('auteur') ?></p>
+                    <p class="text-center"><span data-i18n="produit.adminProduit.categorie">Catégorie</span> :
+                        <?= $produit->getField('categorie') ?></p>
+                    <p class="text-center"><span data-i18n="produit.adminProduit.dateParution">Date de parution</span> :
+                        <?= $produit->getField('date_parution') ?></p>
+                    <?php if($produit->getField('traducteur')!=''): ?>
+                    <p class="text-center"><span data-i18n="produit.adminProduit.traducteur">Traducteur</span> :
+                        <?= $produit->getField('traducteur') ?></p>
+                    <p class="text-center"> <span data-i18n="produit.adminProduit.dateTraduction">Date de
+                            traduction</span> : <?= $produit->getField('date_traduction') ?> </p>
+                    <?php endif; ?>
+                    <p class="text-center"><span data-i18n="produit.adminProduit.description">Description</span> :
+                        <?= $produit->getField('description') ?></p>
+                    <p class="text-center"> <span data-i18n="produit.adminProduit.editeur">Editeur</span> :
+                        <?= $produit->getField('editeur') ?> </p>
+                    <p class="text-center"><span data-i18n="produit.adminProduit.collection">Collection</span> :
+                        <?= $produit->getField('collection') ?> </p>
+                    <hr>
+                    <?php if ( $produit->getField('stock') > 0 ) :?>
+                    <em><span data-i18n="produit.adminProduit.stock">Stock</span> :
+                        <?= $produit->getField('stock') ?></em>
+                    <hr>
+                    <form method="post" action="<?= $url ?>produit/affiche/<?=$produit->getField('id_produit') ?>">
+                        <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>" />
 
-                    <label for="quantite">Quantité</label>
-                    <select class="form-control" id="quantite" name="quantite">
-                        <?php
+                        <label for="quantite">Quantité</label>
+                        <select class="form-control" id="quantite" name="quantite">
+                            <?php
                                 for($i=1; $i<=$produit->getField('stock') && $i<=5; $i++ ): ?>
-                        <option><?= $i ?></option>
-                        <?php endfor; ?>
-                    </select><br>
-                    <input type="submit" class="btn btn-success col-12" name="ajout_panier"  data-i18n="[value]produit.ficheProduit.ajout" value="Ajout au panier">
-                </form>
-                <?php else : ?>
-                <div class="alert alert-danger text-center"  data-i18n="produit.ficheProduit.rupture">
-                    Produit victime de son succès (indisponible)
+                            <option><?= $i ?></option>
+                            <?php endfor; ?>
+                        </select><br>
+                        <input type="submit" class="btn btn-success col-12" name="ajout_panier"
+                            data-i18n="[value]produit.ficheProduit.ajout" value="Ajout au panier">
+                    </form>
+                    <?php else : ?>
+                    <div class="alert alert-danger text-center" data-i18n="produit.ficheProduit.rupture">
+                        Produit victime de son succès (indisponible)
+                    </div>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
             </div>
         </div>
-    </div>
-    <!-- on prévoit un encart de produits suggérés-->
+        <!-- on prévoit un encart de produits suggérés-->
 
 
 
-    <?php  if($autresProduits) : ?>
-    <h2 class="text-center w-md-100 w-80 m-5"> <span data-i18n="produit.ficheProduit.associes1">Ces articles de la catégorie</span> 
-        <span data-i18n="produit.boutique.categories.<?=  $produit->getField('categorie') ?>"><?=$produit->getField('categorie')?></span> 
-        <span data-i18n="produit.ficheProduit.associes2">pourraient vous plaire.</span> </h2>
-    <div class="more d-flex w-100">
-        <?php
+        <?php  if($autresProduits) : ?>
+        <h2 class="text-center w-md-100 w-80 m-5"> <span data-i18n="produit.ficheProduit.associes1">Ces articles de la
+                catégorie</span>
+            <span
+                data-i18n="produit.boutique.categories.<?=  $produit->getField('categorie') ?>"><?=$produit->getField('categorie')?></span>
+            <span data-i18n="produit.ficheProduit.associes2">pourraient vous plaire.</span> </h2>
+        <div class="more d-flex w-100">
+            <?php
     foreach ($autresProduits as $autreProduit): ?>
 
-        <div class="card m-1" style="width: 18rem;">
-            <a href="<?= $url ?>produit/affiche/<?= $autreProduit->getField('id_produit') ?>">
-                <img src="<?= $url ?>photo/products/<?= $autreProduit->getField('photo') ?>" alt="" class="card-img img-fluid">
-            </a>
-            <div class="card-body">
-                <h3><?= $autreProduit->getField('titre') ?></h3>
-                <?php if(strlen($autreProduit->getField('description'))>150): ?>
-                <p class="text-center"> Description : <?= substr($autreProduit->getField('description'),0,150).' ...' ?>
-                </p>
-                <?php  else: ?>
-                <p class="text-center">Description : <?= $autreProduit->getField('description') ?></p>
-                <?php endif; ?>
+            <div class="card m-1" style="width: 18rem;">
+                <a href="<?= $url ?>produit/affiche/<?= $autreProduit->getField('id_produit') ?>">
+                    <img src="<?= $url ?>photo/products/<?= $autreProduit->getField('photo') ?>" alt=""
+                        class="card-img img-fluid">
+                </a>
+                <div class="card-body">
+                    <h3><?= $autreProduit->getField('titre') ?></h3>
+                    <?php if(strlen($autreProduit->getField('description'))>150): ?>
+                    <p class="text-center"> Description :
+                        <?= substr($autreProduit->getField('description'),0,150).' ...' ?>
+                    </p>
+                    <?php  else: ?>
+                    <p class="text-center">Description : <?= $autreProduit->getField('description') ?></p>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <?php endforeach;
+endif ; ?>
+        </div>
+    </div>
+    <div class="col-md-4 ">
+        <?php                        
+            if($membre): ?>
+        <h2 class="text-center w-md-100 w-80 m-5"><span data-i18n="produit.ficheProduit.moyNote">Moyenne des
+                notes</span> : <?= number_format($moyenneNotes['note'],2) ?></h2>
+        <div class="card border  mb-3">
+            <div class="card-body ">
+                <div class="card-title text-center">
+                    <h2><?= $note['titre']  ?> </h2>
+                    <h5>Par <?= $membre->getField('pseudo') ?> le <?= $note['date'] ?> </h5>
+                </div>
+
+                <p class="text-center"><span data-i18n="note.notes.note">Note</span> : <?= $note['note'] ?></p>
+                <p class="text-center"><span data-i18n="note.notes.avis">Avis</span> : <?= $note['description'] ?></p>
             </div>
         </div>
-        <?php endforeach;
-endif ; ?>
-    </div>
-</div>
-    <div class="col-md-4 ">
-            <?php                        
-            if($membre): ?>
-            <h2 class="text-center w-md-100 w-80 m-5"><span data-i18n="produit.ficheProduit.moyNote">Moyenne des notes</span> : <?= number_format($moyenneNotes['note'],2) ?></h2>
-            <div class="card border  mb-3">
-                    <div class="card-body ">
-                        <div class="card-title text-center">
-                                <h2><?= $note['titre']  ?> </h2>
-                            <h5>Par <?= $membre->getField('pseudo') ?> le <?= $note['date'] ?> </h5>
-                        </div>
-        
-                        <p class="text-center"><span data-i18n="note.notes.note">Note</span> : <?= $note['note'] ?></p>
-                        <p class="text-center"><span data-i18n="note.notes.avis">Avis</span> : <?= $note['description'] ?></p>
+        <?php else: ?>
+        <h2 class="text-center w-md-100 w-80 m-5" data-i18n="produit.ficheProduit.erreur1">Ce produit n'est pas encore
+            noté</h2>
+        <?php endif; ?>
+        <a href="<?= $url ?>note/notes/<?= $produit->getField('id_produit') ?>" class="btn btn-success  mb-3"
+            data-i18n="produit.ficheProduit.link"> Voir tous les avis</a>
+        <h3 class=" mb-3" data-i18n="produit.ficheProduit.formAvis">Donnez votre avis</h3>
+        <?php if(isset($_SESSION['membre'])) : ?>
+        <form method="post" action="<?= $url ?>note/notes/<?=$produit->getField('id_produit') ?>"
+            enctype="multipart/form-data">
+
+
+            <div class="form-group mb-3">
+                <div class="row">
+                    <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>"
+                        class="form-control">
+                    <input type="hidden" name="id_membre" value="<?= $_SESSION['membre']->getField('id_membre') ?>"
+                        class="form-control">
+                    <label for="note" data-i18n="note.notes.note">Note</label>
+                    <input type="number" name="note" id="note" max=10 min=0 value="<?= $note_actuelle['note'] ?? '' ?>"
+                        class="form-control">
+                    <label for="titre" data-i18n="note.notes.titre">Titre</label>
+                    <input type="text" name="titre" id="titre" value="<?= $note_actuelle['titre'] ?? '' ?>"
+                        class="form-control">
+                    <label for="description" data-i18n="note.notes.avis">Avis</label>
+                    <textarea name="description" id="description" class="form-control" rows="7"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <input type="submit" class="btn btn-success mb-3" value="Laissez un avis">
                     </div>
-                </div> 
-                <?php else: ?>
-                <h2 class="text-center w-md-100 w-80 m-5" data-i18n="produit.ficheProduit.erreur1">Ce produit n'est pas encore noté</h2>
-                <?php endif; ?>
-                <a href="<?= $url ?>note/notes/<?= $produit->getField('id_produit') ?>" class="btn btn-success  mb-3" data-i18n="produit.ficheProduit.link"> Voir tous les avis</a>
-                        <h3 class=" mb-3" data-i18n="produit.ficheProduit.formAvis">Donnez votre avis</h3>
-                        <?php if(isset($_SESSION['membre'])) : ?>
-                        <form method="post" action="<?= $url ?>note/notes/<?=$produit->getField('id_produit') ?>" enctype="multipart/form-data">
-      
-      
-                            <div class="form-group  mb-3">
-                                <div class="row">
-                                        <input type="hidden" name="id_produit" value="<?= $produit->getField('id_produit') ?>" class="form-control">
-                                        <input type="hidden" name="id_membre" value="<?= $_SESSION['membre']->getField('id_membre') ?>" class="form-control">
-                                        <label for="note" data-i18n="note.notes.note">Note</label>
-                                  <input type="number" name="note" id="note" value="<?= $note_actuelle['note'] ?? '' ?>" class="form-control">
-                                  <label for="titre" data-i18n="note.notes.titre">Titre</label>
-                                  <input type="text" name="titre" id="titre" value="<?= $note_actuelle['titre'] ?? '' ?>" class="form-control">
-                                  <label for="description" data-i18n="note.notes.avis">Avis</label>
-                                        <textarea name="description" id="description" class="form-control" rows="7"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <input type="submit" class="btn btn-success mb-3" value="Laissez un avis">
-                                    </div>
-                                </div>
-                        </form>
-                        <?php else : ?>
-                          <p data-i18n="produit.ficheProduit.erreur2">Vous devez vous connecter pour laisser un avis</p>
-                          <li class="nav-item">
-                            <a class="nav-link" href="<?= $url ?>membre/connexion" data-i18n="membre.connexion.boutton">Connexion</a>
-                          </li>
-                        <?php endif; ?>
-                      </div>
+                </div>
+            </div>
+        </form>
+        <?php else : ?>
+        <p data-i18n="produit.ficheProduit.erreur2">Vous devez vous connecter pour laisser un avis</p>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= $url ?>membre/connexion" data-i18n="membre.connexion.boutton">Connexion</a>
+        </li>
+        <?php endif; ?>
     </div>
 </div>
