@@ -27,17 +27,17 @@
 
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="<?= $url ?>"> <i class="fa fa-home"></i><span data-i18n="layout.boutique"> Boutique
+          <a class="nav-link" href="<?= $url ?>"> <i class="fa fa-home"></i><span data-i18n="layout.boutique"> 
             </span><span class="sr-only">(current)</span></a>
         </li>
         <?php if( !isset($_SESSION['membre'])) : ?>
 
         <li class="nav-item">
-          <a class="nav-link" href="<?= $url ?>membre/connexion"><span data-i18n="layout.connexion">Connexion</span></a>
+          <a class="nav-link" href="<?= $url ?>membre/connexion"><span data-i18n="layout.connexion"></span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?= $url ?>membre/inscription"><span
-              data-i18n="layout.inscription">Inscription</span></a>
+              data-i18n="layout.inscription"></span></a>
         </li>
         <?php else : ?>
 
@@ -47,11 +47,11 @@
             <i class="fa fa-user"></i> <?= $_SESSION['membre']->getField('pseudo') ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown1">
-            <a class="dropdown-item" href="<?= $url ?>membre/profil"><span data-i18n="layout.profil">Profil</span></a>
+            <a class="dropdown-item" href="<?= $url ?>membre/profil"><span data-i18n="layout.profil"></span></a>
             <a class="dropdown-item" href="<?= $url ?>commande/afficheCommande"><span
-                data-i18n="layout.commandes">Commandes</span></a>
+                data-i18n="layout.commandes"></span></a>
             <a class="dropdown-item" href="<?= $url?>membre/deconnexion"><span
-                data-i18n="layout.deconnexion">Déconnexion</span></a>
+                data-i18n="layout.deconnexion"></span></a>
           </div>
         </li>
 
@@ -62,7 +62,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-cogs"></i> <span data-i18n="layout.admin.site">Gestion du site</span></a>
+            <i class="fa fa-cogs"></i> <span data-i18n="layout.admin.site"></span></a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
             <a class="dropdown-item" href="<?= $url ?>produit/adminProduit"><span
                 data-i18n="layout.admin.produits">Gestion des produits</span></a>
@@ -80,7 +80,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="<?= $url ?>produit/panier">
-            <i class="fa fa-shopping-cart"></i> <span data-i18n="layout.panier">Panier</span>
+            <i class="fa fa-shopping-cart"></i> <span data-i18n="layout.panier"></span>
             <?php
                     if (!empty($nb)):
                     ?>
@@ -114,8 +114,7 @@
     <p>&copy; <span data-i18n="layout.footer.1"> &copy; 2019 Bouquinthèque - Clément Menard - powered by
         FredoFramework</span>&copy;</p>
     <p data-i18n="layout.footer.2">Ce site est une maquette, il ne permet nullement d'opérer des transactions</p>
-    <p><a data-i18n="layout.footer.quisommesnous" class="btn-success" href="<?= $url ?>divers/quisommesnous">Qui sommes
-        nous?</a></p>
+    <p><a data-i18n="layout.footer.quisommesnous" class="btn-success" href="<?= $url ?>divers/quisommesnous"></a></p>
   </footer>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
