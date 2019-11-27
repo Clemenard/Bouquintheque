@@ -20,6 +20,10 @@ a .active{
 color:white;
 }
 
+.brown{
+  background-color:rgb(101,64,46);
+  color:white;
+}
 a:hover, .btn-success:hover, a .active:hover, .dropdown-item a:hover{
   color:rgb(51,148,65);
   }
@@ -31,7 +35,7 @@ a:hover, .btn-success:hover, a .active:hover, .dropdown-item a:hover{
     color:white;  
   }
 
-.flamme,#meilleursventes, .btn-success p {
+.flamme,#meilleursventes,  {
   font-weight: bold;
   color:white!important;
   text-shadow: rgb(101,64,46) 0.2em 0.2em 0.4em;
@@ -59,3 +63,11 @@ max-height:250px;
   margin-right:5px;
   cursor: pointer;
 }
+ @media screen and (max-width: 640px) {
+  h2,h3{
+  font-size:1.2em;
+  }
+  .card{
+    width:100%;
+  }
+  } 

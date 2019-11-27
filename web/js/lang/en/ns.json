@@ -108,7 +108,11 @@
             "associes1": "Theses books from the category",
             "associes2": "could please you.",
             "ajout": "Add to the cart",
-            "rupture": "This product is currently sold out."
+            "rupture": "This product is currently sold out.",
+            "erreur1": "This product has no review",
+            "erreur2": "To give your opinion you need to be connected",
+            "formAvis": "Give a review",
+            "link": "See all reviews"
         },
         "panier": {
             "vide": "Your cart is empty :-(",

@@ -108,7 +108,11 @@
             "associes1": "Ces articles de la catégorie",
             "associes2": "pourraient vous plaire.",
             "ajout": "Ajout au panier",
-            "rupture": "Produit victime de son succès (indisponible)"
+            "rupture": "Produit victime de son succès (indisponible)",
+            "erreur1": "Ce produit n'a pas d'avis",
+            "erreur2": "Vous devez être connecté pour donner vore avis",
+            "formAvis": "Donnez votre avis",
+            "link": "Voir tous les avis"
         },
         "panier": {
             "vide": "Votre panier est vide :-(",
