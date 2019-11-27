@@ -2,6 +2,8 @@
  console.log(Cookies.get('lng'))
  if(Cookies.get('lng') !='en' && Cookies.get('lng') !='fr')
 {Cookies.set('lng', 'en',{ expires: 7 });}
+$( document ).ready(function() {
+
 i18next.use(window.i18nextXHRBackend)
         .init({
             debug: false,
@@ -20,6 +22,7 @@ i18next.use(window.i18nextXHRBackend)
             console.log("a")
             $(document).localize();
         });
+    });
 
     function getCookie(cname) {
         var name = cname + "=";
