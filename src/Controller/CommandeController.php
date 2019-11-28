@@ -16,7 +16,7 @@ class CommandeController extends Controller{
         $params['TVA'] = $this->TVA;
         $pdf = $this->getModel('Model\PDFModel');
       $pdf->SetFont('Times','',12);
-      $header = array('Ref.', 'Desc.', 'Prix unitaire', 'Quantite','Prix total');
+      $header = array('Ref.', 'Desc.', 'Prix unitaire HT', 'Quantite','Prix total HT');
       // Chargement des données
       $data = $params['details_commande'];
       $pdf->AddPage();

@@ -19,7 +19,11 @@ color:rgb(101,64,46);
 a .active{
 color:white;
 }
-
+.promotions{
+  text-align: center;
+  color: rgb(101,64,46);
+  text-shadow: gold 0.2em 0.2em 0.4em;
+}
 .brown{
   background-color:rgb(101,64,46);
   color:white;
@@ -35,7 +39,7 @@ a:hover, .btn-success:hover, a .active:hover, .dropdown-item a:hover{
     color:white;  
   }
 
-.flamme,#meilleursventes,  {
+.flamme,#meilleursventes  {
   font-weight: bold;
   color:white!important;
   text-shadow: rgb(101,64,46) 0.2em 0.2em 0.4em;
