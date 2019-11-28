@@ -1,4 +1,5 @@
 <?php
+namespace Model;
 require($url.'../src/lib/fpdf/fpdf.php');
 
 class PDFModel extends FPDF
@@ -8,7 +9,7 @@ class PDFModel extends FPDF
 function Header()
 {
     // Logo
-    $this->Image( $url.'photo/banniere.jpg',100,6,250);
+    $this->Image( $url.'photo/banniere.jpg',10,6,30);
     // Police Arial gras 15
     $this->SetFont('Arial','B',15);
     // Décalage à droite
@@ -27,7 +28,7 @@ function Footer()
     // Police Arial italique 8
     $this->SetFont('Arial','I',8);
     // Numéro de page
-    $this->Cell(0,10,'Bouquintheque, page '.$this->PageNo().'/{nb}',0,0,'C');
+    $this->Cell(0,10,'Bouquintheque 2019',0,0,'C');
 }
 
 function LoadData($file)
@@ -41,22 +42,30 @@ function LoadData($file)
 }
 
 // Tableau simple
-function BasicTable($header, $data,$basic)
-{
-    $this->Cell(40,7,"Commande passée le : ".date('d/m/Y à H:i:s',strtotime($basic->getField('date_enregistrement'))),1);
-    $this->Cell(40,7,"Pour un montant total de : ".$basic->getField('montant'));
-    $this->Cell(40,7,"Etat : ".$basic->getField('etat'));
+function BasicTable($header, $data,$basic){
+    $this->Cell(40,7,"Commande passée le : ".date('d/m/Y à H:i:s',strtotime($basic->getField('date_enregistrement'))),0,1);
+    $this->Cell(50,7,"Pour un montant total de : ".$basic->getField('montant')." euros.",0,1);
+    $this->Cell(60,7,"Etat : ".$basic->getField('etat'),0,1);
     // En-tête
     foreach($header as $col)
-        $this->Cell(40,7,$col,1);
+    if($col=='Desc.') $this->Cell(120,7,$col,1);
+      else  $this->Cell(40,7,$col,1);
     $this->Ln();
     // Données
     foreach($data as $row)
     {
-        foreach($row as $col)
-            $this->Cell(40,6,$col,1);
-        $this->Ln();
+        foreach($row as $key=>$col){
+        if($key=='reference' ||  $key=='titre' || $key=='quantite' || $key=='prix'){
+          if($key=='titre'){
+            $this->Cell(120,6,$col,1);
+          } 
+          else{$this->Cell(40,6,$col,1);}
+        }
     }
+    $this->Cell(40,6,$row['prix']*$row['quantite'],1);
+    $this->Ln();
+}
+    
 }
 
 // Tableau amélioré

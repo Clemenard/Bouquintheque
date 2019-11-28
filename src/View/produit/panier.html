@@ -68,7 +68,7 @@
         <?php if (isset($_SESSION['membre'])) : ?>
             <div class="col-12 text-center">
                 <form action="<?= $url ?>produit/verifPromo" method="post">
-                    <input type="hidden" name="sommeTotale" value="<?= $somme_totale ?>">
+                    <input type="hidden" name="sommeTotale" value="<?= (1+$TVA)*$somme_totale ?>">
                     <label for="promo"  data-i18n="produit.panier.codePromo">Entrez votre code promotionel</label><input id="promo" name="promo" type="text">
                     <input type="submit" class="btn btn-success" name="validerpanier" data-i18n="[value]produit.panier.valider" value="Valider le panier">
                 </form>

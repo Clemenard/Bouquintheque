@@ -141,7 +141,7 @@ if(isset($erreur)){
           }
         }
         else{
-        $this->redirect($this->url.'commande/afficheCommande/'.$_POST['sommeTotale'].'/Aucune--Zéro'); 
+        $this->redirect($this->url.'commande/afficheCommande/'.$_POST['sommeTotale'].'/Aucune--0'); 
         }
       } 
       } 

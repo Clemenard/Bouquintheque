@@ -31,7 +31,7 @@
                     $nb_articles += $details_commande[$i]['quantite'];
                 ?>
                 <tr>
-                    <td><?= $details_commande[$i]['id_produit'] ?></td>
+                    <td><?= $details_commande[$i]['reference'] ?></td>
                     <td><a href="<?= $url ?>produit/affiche/<?= $details_commande[$i]['id_produit'] ?>"><?=$details_commande[$i]['titre'] ?></a></td>
                     <td><?= $details_commande[$i]['quantite'] ?></td>
                     <td>
@@ -45,7 +45,7 @@
                     <tr>
                             <td colspan="4" class="text-right">
                                  <span data-i18n="produit.panier.mentionPrix1">Montant total pour</span>  
-                                 <?= $nb ?> 
+                                 <?= $nb_articles ?> 
                                  <span data-i18n="produit.panier.mentionPrix2">article(s)</span></td>
                             <td>
                                 <?= $somme_totale ?> € HT
@@ -79,5 +79,4 @@
     </div>
     <?php endif; ?>
     <a href="<?= $url ?>commande/afficheCommande" class="btn btn-success" data-i18n="commande.detailscommande.retour">Revenir à l'historique des commandes</a>
-    <!-- <a href="<?= $url ?>commande/convertirPdf/<?= $commande->getField('id_commande') ?>" class="btn btn-success" data-i18n="commande.detailscommande.convertir">Télécharger la facture en format pdf</a>
- -->
+    <a href="<?= $url ?>commande/convertirPdf/<?= $commande->getField('id_commande') ?>" class="btn btn-success" data-i18n="commande.detailscommande.convertir">Télécharger la facture en format pdf</a>

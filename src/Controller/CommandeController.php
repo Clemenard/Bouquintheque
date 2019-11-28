@@ -16,7 +16,7 @@ class CommandeController extends Controller{
         $params['TVA'] = $this->TVA;
         $pdf = $this->getModel('Model\PDFModel');
       $pdf->SetFont('Times','',12);
-      $header = array('Ref.', 'Desc.', 'Quantité', 'Prix unitaire','Prix total');
+      $header = array('Ref.', 'Desc.', 'Prix unitaire', 'Quantite','Prix total');
       // Chargement des données
       $data = $params['details_commande'];
       $pdf->AddPage();
@@ -90,7 +90,6 @@ if(!empty($id)){
 
   public function validationCommande($promo,$sommeTotale){
     // panier devient une commande
-    var_dump($_SESSION);
     if(isset($_SESSION['panier'])){
       // insertion de la commande
 
