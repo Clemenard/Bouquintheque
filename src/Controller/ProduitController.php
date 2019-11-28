@@ -111,7 +111,7 @@ public $TVA=0.2;
           if($promotion==false ) {$erreur[]="Ce code promo n'existe pas.\n";}
           else{
             $isUsed=$this->getModel('Model\PromotionModel')->isPromotionUsed($promotion['id_promotion'],$_SESSION['membre']->getField('id_membre'));
-            if($isUsed) {var_dump($isUsed);$erreur[]="Vous avez déja utilisé ce code promo.\n";}
+            if($isUsed) {$erreur[]="Vous avez déja utilisé ce code promo.\n";}
           if(intval($_POST['sommeTotale'])<$promotion['panier_minimum']) $erreur[]="La valeur de votre panier est inférieure à ".$promotion['panier_minimum']." €.\n"; 
           if($promotion['stock']<=0) $erreur[]="La promotion est épuisée.\n";
           if($promotion['date_expiration']<date("Y-m-d") ) $erreur[]="La période de promotion a expiré le .".$promotion['date_expiration']."\n";}
